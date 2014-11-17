@@ -210,21 +210,22 @@
  *   );
  * @endcode
  */
-$databases = array (
-  'default' => 
-  array (
-    'default' => 
-    array (
-      'database' => 'garage',
-      'username' => 'garage',
-      'password' => 'garage',
-      'host' => 'localhost',
-      'port' => '',
-      'driver' => 'mysql',
-      'prefix' => '',
-    ),
-  ),
-);
+
+// $databases = array (
+//   'default' => 
+//   array (
+//     'default' => 
+//     array (
+//       'database' => 'garage',
+//       'username' => 'garage',
+//       'password' => 'garage',
+//       'host' => 'localhost',
+//       'port' => '',
+//       'driver' => 'mysql',
+//       'prefix' => '',
+//     ),
+//   ),
+// );
 
 /**
  * Access control for update.php script.
