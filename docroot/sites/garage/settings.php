@@ -26,6 +26,7 @@ if (file_exists('/var/www/site-php')) {
 
 // new relic site-specific tracking 
 if (extension_loaded('newrelic')) {
-    $site_domain = array_pop(explode('/', conf_path()));
+    $conf = explode('/', conf_path());
+    $site_domain = array_pop($conf);
     newrelic_set_appname("$site_domain;acquia-garage", '', 'true');
 }
