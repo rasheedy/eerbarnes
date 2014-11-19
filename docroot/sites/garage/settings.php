@@ -28,5 +28,5 @@ if (file_exists('/var/www/site-php')) {
 if (extension_loaded('newrelic')) {
     $conf = explode('/', conf_path());
     $site_domain = array_pop($conf);
-    newrelic_set_appname("$site_domain;acquia-garage", '', 'true');
+    newrelic_set_appname("$site_domain;", '', 'true');
 }
