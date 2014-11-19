@@ -1,6 +1,6 @@
 <?php
 
-if($_SERVER['SERVER_NAME'] == 'bronxgarage.dev'){
+if($_SERVER['SERVER_NAME'] == 'bronxgarage.local'){
 	$databases = array (
 	  'default' => 
 	  array (
@@ -17,11 +17,6 @@ if($_SERVER['SERVER_NAME'] == 'bronxgarage.dev'){
 	  ),
 	);
 }
-
-
-
-
-
 
 
 // garage settings file
