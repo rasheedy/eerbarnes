@@ -554,3 +554,9 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/eerbarnes/eerbarnes-settings.inc';
 }
+
+// new relic site-specific tracking 
+if (extension_loaded('newrelic')) {
+    $site_domain = array_pop(explode('/', conf_path()));
+    newrelic_set_appname("$site_domain;acquia-dev", '', 'true');
+}
