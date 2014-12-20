@@ -122,7 +122,7 @@ DirectoryIndex index.php index.html index.htm
 
 
 #---- ge-energy.com start
-RewriteCond %{HTTP_HOST} ^www\.ge-energy\.com$
+RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
 # Don't loop anything targeting the actual mask directory, to allow
 # for linked scripts, stylesheets etc in the static HTML
 RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
