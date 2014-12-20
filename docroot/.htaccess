@@ -127,7 +127,7 @@ RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
 # for linked scripts, stylesheets etc in the static HTML
 RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
 # pass-through the matching file from beneath /sites/default/files/ and stop processing
-RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
+RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/$1 [PT,L]
 #---- ge-energy.com end
 
   # Redirect all users to access the site WITH the 'www.' prefix
