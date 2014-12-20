@@ -120,13 +120,6 @@ DirectoryIndex index.php index.html index.htm
   # uncomment the following line:
   RewriteBase /
 
-  # Redirect all users to access the site WITH the 'www.' prefix
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteCond %{HTTP_HOST} !^geog\.dev\.local [NC]
-  RewriteCond %{HTTP_HOST} !^gemc\.dev\.local [NC]
-  RewriteCond %{HTTP_HOST} !\.([a-z-]+\.[a-z]{2,6})$ [NC]
-  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 
 #---- ge-energy.com start
 RewriteCond %{HTTP_HOST} ^www\.ge-energy\.com$
@@ -136,6 +129,13 @@ RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
 # pass-through the matching file from beneath /sites/default/files/ and stop processing
 RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
 #---- ge-energy.com end
+
+  # Redirect all users to access the site WITH the 'www.' prefix
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} !^geog\.dev\.local [NC]
+  RewriteCond %{HTTP_HOST} !^gemc\.dev\.local [NC]
+  RewriteCond %{HTTP_HOST} !\.([a-z-]+\.[a-z]{2,6})$ [NC]
+  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
   #custom redirect start --

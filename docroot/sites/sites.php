@@ -6,8 +6,3 @@ $sites['www.ge-energy.com'] = 'garage';
 $sites['bronxgarage.com'] = 'garage';
 $sites['bronxgarage.dev'] = 'garage';
 $sites['bronxgarage.local'] = 'garage';
-
-
-// echo '<pre>';
-// print_r($sites);
-// exit;
