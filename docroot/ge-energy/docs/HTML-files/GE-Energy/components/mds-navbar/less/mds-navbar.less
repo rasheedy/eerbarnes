@@ -1,0 +1,301 @@
+// Dependencies
+// --------------------------------------------------
+
+@import "ge-bootstrap/less/ge-bootstrap.less";
+@import "variables.less";
+
+
+// Styles
+// --------------------------------------------------
+.navbar {
+  margin-bottom: 0;
+  &.navbar-small {
+    .brand {
+      margin: 6px 0 0 -35px;
+      height: 55px;
+      .primary-brand {
+        font-size: 20px;
+      }
+      .secondary-brand {
+        font-size: 20px;
+      }
+    }
+    .ge-logo {
+      height: 40px;
+      width: 40px;
+      margin: -6px 10px 0px 0px;
+    }
+    .toolbar-container {
+      margin-top: 17px;
+    }
+    .primary-navbar {
+      margin-left: -30px;
+    }
+    [class*='span'] {
+      margin-bottom: 0px;
+    }
+    .navbar-inner {
+      min-height: 80px;
+    }
+  }
+  .navbar-inner {
+    min-height: 136px;
+    background-color: @navbarBackground;
+    background-image: none;
+    .border-radius(0);
+    border: 0;
+    .box-shadow(~"none");
+    padding: 0;
+  }
+  .toolbar-container {
+    margin-top: 25px;
+  }
+  .btn-toolbar {
+    display: inline-block;
+    .btn {
+      margin-bottom: 0;
+    }
+  }
+  .navbar-search {
+    display: inline-block;
+    float: none;
+    margin-left: 0px;
+  }
+  .btn-navbar {
+    display: none;
+    margin-top: 12px;
+    margin-bottom: @marginBtnBottom;
+    padding: 4px 10px 3px 10px;
+    span {
+      font-size: 0px;
+    }
+    i[class*="icon-ico_menu_lg"] {
+      margin-top: 3px;
+      font-size: @baseFontSize;
+    }
+  }
+  .brand {
+    margin-top: 17px;
+    color: @blue;
+    font-size: @baseFontSize + 12;
+    .main-brand {
+      font-weight: bold;
+    }
+  }
+  .nav {
+    // Make the nav sit below the brand.
+    clear: left;
+    // Shift the nav over so the first item is left aligned with the brand.
+    margin-left: -15px;
+
+    .open .btn,
+    .btn:hover,
+    .btn:focus {
+      background-color: @linkColor;
+      border-color: @linkColor;
+      color: @white;
+    }
+  }
+  // the actual navigation
+  .primary-navbar {
+    background-color: @navbarBackground;
+    height: 40px;
+    .nav {
+      margin-left: -10px;
+      > li > a {
+        border: 1px solid transparent;
+        color: @navbarLinkColor;
+        font-weight: bold;
+        outline: 0;
+        padding: 9px 14px 8px;
+        &:hover {
+          color: @linkColor;
+        }
+      }
+      > li.active > a {
+        background-color: transparent;
+        color: @linkColor;
+      }
+      > li.dropdown.open > .dropdown-toggle {
+        border: 1px solid @grayLighter;
+        background-color: @white;
+        border-bottom-color: @white;
+        color: @linkColor;
+        margin-bottom: -1px;
+        position: relative;
+        z-index: @zindexDropdown + 1;
+      }
+    }
+    .dropdown-menu {
+      .border-radius(0);
+      border: 1px solid @grayLighter;
+      margin-top: 0;
+      min-width: 100px;
+      padding: 15px;
+      white-space: nowrap;
+      &:before,
+      &:after {
+        display: none !important;
+      }
+      a {
+        color: @grayDarkest;
+        font-weight: bold;
+        margin-right: 30px;
+        padding-left: 0px;
+        padding-right: 0;
+        &:hover {
+          background: transparent;
+          color: @linkColor;
+        }
+        &:active {
+          color: @dropdownLinkColorActive;
+        }
+        &:focus {
+          background-color: @white;
+          background: none;
+          outline: none;
+        }
+      }
+      .open {
+        float: left;
+        min-width: 100px;
+
+        li > a {
+          line-height: 20px;
+          color: @grayDarker;
+          font-weight: normal;
+          margin-left: 0;
+          margin-right: 0;
+          &:hover {
+            color: @linkColor;
+          }
+        }
+      }
+    }
+    .dropdown-menu .active > a,
+    .dropdown-menu .active > a:hover {
+      background: @dropdownLinkBackgroundActive;
+    }
+  }
+
+  // Dumbest rule EVAR to disable bootstrap gradients in IE MDS-216
+  // https://devcloud.swcoe.ge.com/tracker/browse/MDS-216
+  // http://stackoverflow.com/questions/1768161/how-do-i-reset-or-override-ie-css-filters
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
+    background: none;
+    background-repeat: none;
+    filter: -;
+    text-decoration: none;
+    color: @dropdownLinkColorHover;
+    background-color: @dropdownLinkBackgroundHover;
+  }
+
+  .btn:not(.btn-primary) {
+    background-color: @white;
+    &:hover, &:focus, &:active {
+      background-color: @white;
+    }
+  }
+
+  .btn.btn-danger {
+    background-color: @red;
+    color: @white;
+    i[class*="icon"] {
+      color: @white;
+    }
+    &:hover, &:focus, &:active {
+      background-color: darken(@red, 10%);
+      color: @white;
+    }
+  } 
+
+  .btn.btn-navbar {
+    background-color: @btnPrimaryBackground;
+    color: @btnPrimaryText;
+    [class*="icon-"] {
+      color: @btnPrimaryText;
+    }
+    &:hover, &:focus, &:active {
+      background-color: @btnPrimaryBackground;
+      color: @btnPrimaryText;
+    }
+  }
+}
+
+//-- Typeahead
+.navbar .typeahead {
+  margin-top: -10px;
+}
+.typeahead-faceted {
+  padding-top: 0;
+  overflow: hidden;
+  background-color: @grayLighter;
+  border: 1px solid @grayLight;
+  width: 167%;
+  ul, ol {
+    margin-top: 0;
+  }
+}
+.typeahead-faceted > ul {
+  margin: -1px;
+}
+.facet {
+  .clearfix;
+  width: 100%;
+}
+
+.facet-name {
+  .box-sizing(border-box);
+  color: @textColor;
+  float: left;
+  line-height: 30px;
+  padding: 0 15px;
+  position: relative;
+  text-align: right;
+  top: 1px;
+  white-space: nowrap;
+  width: 40%;
+}
+
+.typeahead-faceted > ul > li:last-child,
+.facet-results {
+  background-color: @white;
+  border-color: @grayLight;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+  .box-sizing(border-box);
+  float: right;
+  padding-top: 0;
+  padding-bottom: 3px;
+  width: 60%;
+}
+.typeahead-faceted > ul > li:first-child {
+  margin-top: 0;
+  .facet-results {
+    border-top: 0;
+    .border-radius( 0 @baseBorderRadius 0 0 );
+  }
+}
+.typeahead-faceted > ul > li:last-child {
+  .border-radius( 0 0 @baseBorderRadius 0 );
+  margin-bottom: -4px;
+}
+
+// IE8 won't apply the rules specified after :last-child, above.
+.lt-ie9 .facet-results,
+.lt-ie9 .typeahead-faceted > ul > li.last {
+  background-color: @white;
+  border-color: @btnBorder;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+  .box-sizing(border-box);
+  float: right;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  width: 60%;
+}
+
+.lt-ie9 .typeahead-faceted > ul > li.last {
+  .border-radius( 0 0 @baseBorderRadius 0 );
+  margin-bottom: -4px;
+}

@@ -1,0 +1,128 @@
+// Dependencies
+// --------------------------------------------------
+
+@import "bootstrap/less/navbar.less";
+
+
+// Bootstrap Overrides
+// --------------------------------------------------
+
+
+.navbar-inner {
+  filter: none;
+}
+
+.navbar-static-top {
+  margin-bottom: @baseLineHeight;
+}
+
+.navbar-fixed-top .navbar-inner,
+.navbar-static-top .navbar-inner,
+.navbar-inner {
+  border-width: 0;
+  .border-radius(0);
+}
+
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    // z-index: 2000000001;  // 1 higher than spin.js z-order
+    z-index: 1039;
+}
+
+.navbar .brand {
+  #voice > .brand(@baseFontSize + 4, normal, 1);
+  height: 70px; // will need rules to shrink on mobile
+  line-height: @baseLineHeight;
+  padding-top: 15px;
+  padding-bottom: 0;
+  text-shadow: none;
+  margin-left: -45px;
+  small {
+    color: @navbarText;
+    font-size: @baseFontSize - 1;
+    margin-left: 5px;
+  }
+}
+
+.navbar .nav > li {
+  font-size: @baseFontSize;
+  > a {
+    text-shadow: none;
+  }
+  // Add spacing to compensate for chevron vs caret.
+  > .dropdown-menu.pull-right {
+    right: 3px;
+  }
+}
+
+.navbar .btn-toolbar {
+  margin: 0;
+  .btn-group {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+}
+
+// TODO - REFACTOR ALL OF THIS NAVBAR!!!!! IT'S CRAZY!!!!!
+
+.navbar .btn,
+.navbar .btn-group {
+  margin-top: 0;
+}
+
+.navbar .btn-group > .btn {
+  font-weight: bold;
+}
+
+.navbar .container {
+  position: relative;
+}
+
+.navbar .btn-navbar {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.navbar-search {
+  float: none;
+  margin-top: 0;
+}
+
+.navbar-search .input-append {
+  margin-bottom: 0px;
+}
+
+
+// .toolbar-container {
+//   float: right;
+// }
+
+// .navbar-search {
+//   margin: ((@navbarHeight - 26) / 2) 0;
+//   .search-query {
+//     .border-radius(0);
+//     padding: 2px 4px;
+//     &:focus,
+//     &:focus + .btn {
+//       background-color: @white;
+//       border-color: @white;
+//       color: @grayDarker;
+//     }
+//   }
+//   .input-append {
+//     margin-bottom: 0;
+//     .search-query {
+//       .border-radius(@baseBorderRadius 0 0 @baseBorderRadius);
+//     }
+//     .btn {
+//       .border-radius(0 @baseBorderRadius @baseBorderRadius 0);
+//     }
+//   }
+//   .search-query,
+//   .btn {
+//     background-color: @navbarSearchBackground;
+//     border-color: @navbarSearchBorder;
+//     color: @grayLight;
+//     .transition(~"background linear .2s, border linear .2s");
+//   }
+// }

@@ -1,0 +1,176 @@
+
+// New Templates - Extension of ede.less
+//  Styles for Basic Blog (Parent)
+// --------------------------------------------------
+
+@import "../../components/brandkit/less/variables.less";
+@import "../../components/bootstrap/less/mixins.less";
+
+
+// Variables
+@green: #46ad00;
+@logowidth: 372px;
+
+// Mixins
+.mixin-green-link {
+  color: @green;
+  font-weight: bold;
+
+  &:link,
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    color: @green;
+  }
+}
+
+
+// context: div.blog-template.blog-basic
+.blog-basic {
+
+  // Global Elements
+  // --------------------
+
+  // Global styles
+  a {
+    .mixin-green-link;
+  }
+
+  .footer {
+    .ge-logo {
+      background: transparent url("../docs/assets/images/logoFooter_green.png") no-repeat;
+      background-size: contain;
+    }
+
+    .colophon ul li a {
+      .mixin-green-link;
+      font-weight: normal;
+    }
+  }
+
+
+  // Blog Parent
+  // --------------------
+
+  // Blog Masthead
+  .masthead {
+    background-color: @green;
+
+    .logo-container {
+      width: 470px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      .logo {
+        width: @logowidth;
+        height: 1000px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        img {
+          position: absolute;
+          bottom: 0;
+        }
+      }
+    }
+
+    header {
+      min-height: 228px;
+
+      .headline {
+        width: 60%;
+        margin: 5% 0 4%;
+        float: none;
+      }
+    }
+  }
+
+
+  // Right rail
+  .block.sidebar {
+    .rail-module {
+      a {
+        .mixin-green-link;
+
+        i {
+          .mixin-green-link;
+        }
+
+        &.btn {
+          &.btn-primary,
+          &.btn-success {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  // Blog Parent: Post module
+  .blog-post-summary {
+    .blog-post-summary-header {
+      h1 {
+        width: 90%;
+        margin: 5px 0 0;
+      }
+
+      .share-controls {
+        // text-align: right;
+        width: 10%;
+      //   margin: 10px -8px 0 0;
+
+      //   .share-individual {
+      //     display: none;
+      //   }
+
+      //   .share-collective {
+      //     display: block;
+      //   }
+
+      //   a {
+      //     color: @gray;
+      //     font-size: 25px;
+      //     margin-left: 4px;
+      //     display: inline-block;
+      //   }
+      }
+    }
+
+    .thumbnail.body.person {
+      padding-left: 71px;
+
+      .name {
+        margin-right: 4px;
+      }
+
+      p.stats {
+        margin: 20px 0 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid gainsboro;
+      }
+    }
+
+    .blog-post-summary-text {
+      font-family: ge-serif;
+
+      .media {
+        img {
+          width: 100%;
+        }
+      }
+    } // .blog-post-summary-text
+
+  } // .blog-post-summary
+
+  #load-posts-indicator {
+    button i {
+      color: #fff;
+    }
+  }
+
+} // .blog-template.blog-basic
+
+

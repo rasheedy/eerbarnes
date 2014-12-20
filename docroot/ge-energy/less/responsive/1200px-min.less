@@ -1,0 +1,67 @@
+//-------------------------------------
+// RESPONSIVE STYLES: 1200px or Greater
+//-------------------------------------
+//
+// What's happening here?
+//
+// This file contains rules and imports for rendering content
+// when the display size is a minimum of 1200 pixels, considered
+// as "large desktop" views. Bootstrap grid rules must be reset
+// before using any grid sizing rules to avoid inheriting sizes
+// from previous imports.
+//
+
+
+@media (min-width: 1200px) {
+
+	// Reset the grid size mixins to fit this media query.
+	#grid > .core(@gridColumnWidth1200, @gridGutterWidth1200);            // Fixed grid
+	#grid > .fluid(@fluidGridColumnWidth1200, @fluidGridGutterWidth1200); // Fluid grid
+	#grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);           // Input grid
+
+  // MDS specific container
+  .mds-container {
+    width: @gridRowWidth1200;
+  }
+
+  // Module specific overrides
+  .text-image-story .align-wrapper {
+    height: 410px;
+  }
+
+  .mds-container.item-category {
+    margin-top: 0px;
+    .text {
+      padding: @gridGutterWidth1200;
+      padding-right: 0;
+      h2 {
+        margin-bottom: 20px;
+      }
+      .align-wrapper { // using to break free of float restriction
+        display: table-cell;
+        vertical-align: bottom;
+        height: 325px;
+      }
+      .align-bottom {
+        display: inline-block;
+        vertical-align: bottom;
+      }
+    }
+  }
+
+
+  .mds-container.card-carousel {
+    .card {
+      width: 350px;
+    }
+  }
+
+  .fill-container.teasers {
+    .teaser {
+      .text {
+        margin-left: 20px;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,192 @@
+//---------------------------------
+// RESPONSIVE STYLES: 480px or Less
+//---------------------------------
+//
+// What's happening here?
+//
+// This file contains rules and imports for rendering content
+// when the display size is a maximum of 480 pixels, usually
+// considered "portait phone" views. Grid rules do not need to
+// be set because this size does not employ a grid in Bootstrap.
+//
+// NOTE: Views of this classification will also traditionally
+// inherit rules from the '767px-max' classification as well.
+//
+
+
+@media (max-width: 480px) {
+
+  .mds-container {
+    width: 100%;
+  }
+
+  .jumpnav {
+    // Hide jumpnav on iphone portrait till rewrite of scrolling
+    // MDS-318
+    //display: none;
+    // Well they want the scrolling bug instead due to EDE-118
+  }
+
+  ul.button-wrapper > li {
+    display: block;
+    // margin-bottom: 10px;
+  }
+
+  .navbar {
+    .navbar-inner {
+      height: 150px; // TODO: should change this but for now...
+    }
+    .brand .secondary-brand {
+      display: inline-block;
+      margin-left: 20px;
+      width: 260px;
+    }
+  }
+
+  .mds-container.notifications .block {
+    padding-left: @gridGutterWidth1200;
+  }
+
+  .mds-container header {
+    position: relative;
+
+    .module-arrow {
+      position: absolute;
+      top: 35px;
+      left: 10px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  }
+
+  //-- Header Carousel mobile
+
+  .fill-container.header-carousel {
+    background-color: @white;
+    .item {
+      background-color: @white;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        color: @black;
+      }
+      [class*="span"] {
+        padding-top: 0px;
+        position: relative;
+        top: 0px;
+      }
+      &.text {
+        position: relative;
+        top: 100%;
+      }
+      a:hover {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          color: @black;
+        }
+      }
+    }
+  }
+
+  //-- Items Selection phone
+
+  .mds-container.items {
+    .items {
+      .item-list {
+        .item {
+          .media {
+            margin-bottom: @gridGutterWidth1200;
+            margin-left: 0;
+          }
+          .span3 {
+            float: none;
+            width: 100%;
+          }
+          .span9 {
+            box-sizing:border-box;
+            float: none;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 30px;
+            padding-right: 30px;
+          }
+          .item-detail {
+            .item-desc {
+              .price {
+                float: none;
+                text-align: left;
+              }
+            }
+            .summary {
+              width: 100% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //-- fill container teaser overrides
+
+  .fill-container.teasers {
+    .teaser {
+      .text {
+        margin-left: 0;
+      }
+    }
+  }
+
+  //-- body thumbnails
+
+  .thumbnail.body.small,
+  .thumbnail.body.medium {
+    .caption {
+      margin-top: 10px;
+    }
+    img {
+      width: 60%;
+    }
+  }
+
+
+  //-- EDE updates
+
+  //-- Settings Screen
+  textarea.ede-textarea-float {
+    float: left;
+    margin-left: 0px;
+  }
+
+  textarea.blog-link {
+    min-height: 45px;
+  }
+
+  .ede-settings-banner {
+    display: none;
+  }
+
+  .ede-settings-dropdown {
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+  // ede sharing modal
+
+  .modal.share .item-description .info {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+
+
+}

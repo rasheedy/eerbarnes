@@ -1,0 +1,416 @@
+
+// Email Templates - Digest - Intermediate B
+// --------------------------------------------------
+
+@import "../../components/brandkit/less/variables";
+@import "email-base.less";
+
+
+/* ========== CLIENT-SPECIFIC STYLES ========== */
+
+#outlook a { padding: 0; } /* Force Outlook to provide a "view in browser" message */
+.ReadMsgBody{width: 100%;} .ExternalClass { width: 100%; } /* Force Hotmail to display emails at full width */
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height:  100%; } /* Force Hotmail to display normal line spacing */
+body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; } /* Prevent WebKit and Windows mobile changing default text sizes */
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; } /* Remove spacing between tables in Outlook 2007 and up */
+img { -ms-interpolation-mode: bicubic; } /* Allow smoother rendering of resized image in Internet Explorer */
+
+/* ========== RESET STYLES ========== */
+
+body { margin: 0; padding: 0; }
+img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+table { border-collapse: collapse !important; }
+body, #bodyTable, #bodyCell { height: 100% !important; margin: 0; padding: 0; width: 100% !important; }
+ul, li { margin: 0; padding: 0; }
+ul { margin-bottom: 15px; }
+li { margin-left: 20px; }
+
+/* ========== TEMPLATE STYLES ========== */
+
+#bodyCell { padding: 20px; }
+#templateContainer { width: 600px; }
+
+/* ========== Page Styles ========== */
+
+body, #bodyTable {
+  background-color: @grayLightestEmail;
+}
+
+h1 {
+  display: block;
+  font-family: @brandFontFamilyEmail;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: normal;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+  margin-left: 0;
+
+  .subhead {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 45px;
+  }
+}
+
+h2 {
+  color: @grayDarkestEmail !important;
+  display: block;
+  font-family: @brandFontFamilyEmail;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 100%;
+  letter-spacing: normal;
+  padding-bottom: 10px;
+  border-bottom: 1px solid @grayLightEmail;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 26px;
+  margin-left: 0;
+}
+
+h3 {
+  color: @grayDarkestEmail;
+  display: block;
+  font-family: @brandFontFamilyEmail;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 125%;
+  letter-spacing: normal;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+#templateViewOnline {
+  background-color: @grayLightestEmail;
+}
+
+.viewOnlineContent {
+  color: @grayEmail;
+  font-family: @sansFontFamilyEmail;
+  font-size: 14px;
+  line-height: 125%;
+  text-align: left;
+  padding-top: 15px;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+
+  div {
+    float: left;
+  }
+
+  a,
+  a:link,
+  a:visited, /* Yahoo! Mail Override */
+  a .yshortcuts /* Yahoo! Mail Override */ {
+    color: @greenEmail;
+    font-weight: normal;
+    text-decoration: none;
+  }
+}
+
+
+#templateHeader {
+  background-color: @greenEmail;
+}
+
+.headerContent {
+  color: @whiteEmail;
+  font-family: @brandFontFamilyEmail;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 100%;
+  padding-top: 18px;
+  padding-right: 40px;
+  padding-bottom: 25px;
+  padding-left: 0;
+  text-align: left;
+
+  &.logo {
+    width: 96px;
+    padding-right: 22px;
+  }
+
+  &.title {
+    padding-top: 37px;
+    padding-left: 0; 
+  }
+}
+
+#headerLogo {
+  display: block;
+}
+
+/* ========== Body Styles ========== */
+
+#templateBody,
+#connect {
+  border-bottom: 1px solid @grayLightEmail;
+}
+
+.bodyContainer {  
+  padding-top: 42px;
+  background-color: @whiteEmail;
+}
+
+.bodyContent {
+  color: @grayDarkerEmail;
+  font-family: @serifFontFamilyEmail;
+  font-size: 16px;
+  line-height: 150%;
+  padding-right: 40px;
+  padding-left: 40px;
+
+  p {
+    font-family: @sansFontFamilyEmail;
+    margin-top: 0;
+  }
+
+  a,
+  a:link,
+  a:visited, /* Yahoo! Mail Override */
+  a .yshortcuts /* Yahoo! Mail Override */ {
+    color: @greenEmail;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  a.more {
+    font-family: @sansFontFamilyEmail;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .more img {
+    margin-bottom: -1px;
+    padding-left: 2px;
+  }
+}
+
+.bodyImage {
+  margin-top: 6px;
+}
+
+.subtable {
+  width: 48.0769231%;
+  padding-bottom: 30px;
+
+  h3 {
+    margin-top: 6px;
+  }
+
+  .abstract div {
+    height: 290px;
+    display: inline-block;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 150%;
+    color: @grayDarkerEmail;
+    padding-top: 16px;
+  }
+}
+
+#connect {
+  .bodyContent {
+    font-family: @sansFontFamilyEmail;
+    font-size: 14px;
+  }
+
+  table {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  table td {
+    line-height: 100%;
+  }
+}
+
+/* ========== Column Styles ========== */
+
+.templateColumnContainer {
+  display: inline;
+  width: 250px;
+}
+
+/* ========== Footer Styles ========== */
+
+.footerContent {
+  color: @grayEmail;
+  font-family: @sansFontFamilyEmail;
+  font-size: 14px;
+  line-height: 150%;
+  padding-top: 20px;
+  text-align: left;
+
+  a,
+  a:link,
+  a:visited, /* Yahoo! Mail Override */
+  a .yshortcuts,
+  a span /* Yahoo! Mail Override */ {
+    color: @grayEmail;
+    font-weight: normal;
+    text-decoration: none;
+  }
+}
+
+.copyright {
+  padding-top: 0;
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+
+/* ========== THRESHOLD 1 OF 1 ========== */
+
+@media only screen and (max-width:  640px) {
+  
+  /* ========== CLIENT-SPECIFIC STYLES ========== */
+  
+  body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: none !important; } /* Prevent Webkit platforms from changing default text sizes */
+  body { width: 100% !important; min-width: 100% !important; } /* Prevent iOS Mail from adding padding to the body */
+
+  /* ========== RESET STYLES ========== */
+  
+  #bodyCell { padding: 10px !important; }
+
+  /* ========== TEMPLATE STYLES ========== */
+
+  #templateContainer {
+    max-width: 600px !important;
+    width: 100% !important;
+  }
+
+  /* ========== Page Styles ========== */
+
+  h1 {
+    font-size: 24px !important;
+
+    .subhead {
+      font-size: 16px !important;
+      line-height: 26px !important;
+    }
+  }
+
+  h2 {
+    margin-bottom: 0 !important;
+  }
+
+  /* ========== Header Styles ========== */
+
+  .headerContent {
+    line-height: 125% !important;
+    padding-top: 10px !important;
+    padding-bottom: 12px !important;
+
+    &.logo {
+      width: 48px !important;
+      padding-right: 11px !important;
+    }
+
+    &.title {
+      padding-top: 16px !important;
+      padding-right: 10px !important;
+      padding-left: 0 !important;
+    }
+  }
+
+  #headerLogo {
+    width: 86px !important;
+  }
+
+  .viewOnlineContent div {
+    float: none !important;
+  }
+
+  /* ========== Body Styles ========== */
+
+  .bodyContainer {
+    padding-top: 0 !important;
+  }
+
+  .bodyContent {
+    line-height: 136% !important;
+    padding-top: 18px !important;
+    padding-right: 20px !important;
+    padding-bottom: 10px !important;
+    padding-left: 20px !important;
+
+    a.more {
+      width: 100px;
+      display: block;
+    }
+  }
+
+  .bodyImage {
+    height: auto !important;
+    width: 100% !important;
+    max-width: 560px !important;
+    margin-bottom: 6px;
+  }
+
+  .subtable {
+    p {
+      padding-top: 15px !important;
+      margin-bottom: 0;
+    }
+
+    .abstract {
+      height: auto;
+    }
+
+    .abstract div {
+      height: auto !important;
+      margin-bottom: 12px;
+    }
+
+    td {
+      display: block !important;
+      width: 100% !important;
+      padding-top: 15px !important;
+      padding-bottom: 15px !important;
+      padding-left: 0 !important;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  #connect {
+    .bodyContent {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    table {
+      margin-top: 15px !important;
+      margin-bottom: 15px !important;
+    }
+  }
+
+  /* ========== Column Styles ========== */
+
+  .templateColumnContainer {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* ========== Footer Styles ========== */
+
+  .footerContent {
+    line-height: 150% !important;
+  }
+
+  .copyright {
+    padding-top: 20px !important;
+  }
+}

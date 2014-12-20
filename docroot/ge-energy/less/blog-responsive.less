@@ -1,0 +1,127 @@
+
+// New Templates Responsive - Extension of ede-responsive.less
+//  Responsive styles common to all new treatments
+// --------------------------------------------------
+
+@import "../components/brandkit/less/variables.less";
+@import "../components/bootstrap/less/mixins.less";
+
+
+// context: div.blog-template
+.blog-template {
+
+  @media (min-width: 1200px) {
+
+    .main-content {
+      padding-top: 30px;
+    }
+
+    .share-controls {
+      .share-individual {
+        display: inline-block;
+      }
+
+      .share-collective {
+        display: none;
+      }
+    }
+
+    .blog-post-summary {
+      margin-bottom: 30px;
+    }
+
+  }
+
+
+  @media (min-width: 768px) and (max-width: 979px) {
+
+    // Blog Masthead
+    .masthead {
+      header {
+        .headline {
+          h1 {
+            font-size: 36px;
+            line-height: 48px;
+          }
+
+          h3 {
+            font-size: 18px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+
+  }
+
+
+  @media (max-width: 767px) {
+
+    // Blog Masthead
+    .masthead {
+      header {
+        .headline {
+          h1 {
+            color: @grayDarkest;
+            font-size: 48px;
+            line-height: 52px;
+          }
+
+          h3 {
+            color: @grayDarkest;
+            font-size: 24px;
+            line-height: 36px;
+          }
+        }
+      }
+    }
+
+    // Page content
+    .main-content {
+      padding-bottom: 0;
+    }
+
+    .container {
+      padding: 0 30px;
+    }
+
+    #load-posts-indicator {
+      button {
+        margin-bottom: 20px;
+      }
+    }
+
+    section.blog-posts {
+      margin-bottom: 20px;
+    }
+
+    .block.sidebar {
+      margin-left: -30px;
+      margin-right: -30px;
+      margin-bottom: -20px;
+    }
+
+    .footer .colophon li {
+      white-space: nowrap;
+
+      .span12 {
+        padding-top: 0;
+      }
+
+      a {
+        width: auto;
+        display: inline;
+      }
+    }
+
+  }
+
+} // .blog-template
+
+
+// Import responsive stylesheets for various blog treatments
+// --------------------------------------------------
+
+@import "blog/blog-basic-responsive.less";
+@import "blog/blog-intermediate-responsive.less";
+

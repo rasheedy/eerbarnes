@@ -1,0 +1,130 @@
+//---------------------------------
+// RESPONSIVE STYLES: 767px or Less
+//---------------------------------
+//
+// What's happening here?
+//
+// This file contains rules and imports for rendering content
+// when the display size is between 768 pixels and 979 pixels,
+// traditionally considered as "tablet to desktop" views.
+// Bootstrap grid rules must be reset before using any grid
+// sizing rules to avoid inheriting sizes from previous imports.
+//
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	// Reset the grid size mixins to fit this media query.
+	#grid > .core(@gridColumnWidth768, @gridGutterWidth768);              // Fixed grid
+	#grid > .fluid(@fluidGridColumnWidth768, @fluidGridGutterWidth768);   // Fluid grid
+	#grid > .input(@gridColumnWidth768, @gridGutterWidth768);             // Input grid
+
+
+  .mds-container {
+    width: @gridRowWidth768;
+  }
+
+
+  .mds-container.card-carousel {
+    .card {
+      width: 200px;
+    }
+  }
+
+
+  .fill-container.teasers {
+    .container {
+      padding: 30px 20px 28px 20px;
+      .text {
+        width: 200px;
+      }
+    }
+  }
+
+  .fill-container.teasers .container.medium {
+    padding: 46px 10px 20px 30px;
+  }
+
+  //-- More section
+
+  .fill-container.more {
+    .input-medium {
+      width: 90px;
+    }
+  }
+
+  //-- Header Carousel mobile
+
+  .fill-container.header-carousel {
+    background-color: @white;
+    .item {
+      background-color: @white;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        color: @black;
+      }
+      .text {
+        padding-top: 20px;
+        position: relative;
+        margin-bottom: 20px;
+        top: 0px;
+      }
+      a:hover {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          color: @black;
+        }
+      }
+    }
+  }
+
+  .mds-container.item-category {
+    [class*="span"] {
+      float: none;
+      width: auto;
+    }
+    .text {
+      width: auto;
+      padding-left: 0;
+      padding-top: @gridGutterWidth1200;
+      margin: 0 @gridGutterWidth1200 0 @gridGutterWidth1200;
+      .align-wrapper {
+        height: auto;
+      }
+    }
+  }
+
+  .fill-container.text-image-story {
+    .text {
+      padding: 1em 1em 1em 0;
+    }
+  }
+
+  //-- Settings Screen
+  textarea.ede-textarea-float {
+    float: left;
+    margin-left: 20px;
+  }
+
+  .ede-settings-banner {
+    display: none;
+  }
+
+  .ede-settings-dropdown {
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+
+
+}
