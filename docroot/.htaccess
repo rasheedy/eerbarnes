@@ -121,6 +121,7 @@ DirectoryIndex index.php index.html index.htm
   RewriteBase /
 
 
+  
   #custom redirect start --
   # - oil and gas redirects
 
@@ -134,16 +135,20 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /about/websites_and_social_media.jsp http://www.ge-energy.com
   Redirect 301 /contact.jsp http://www.ge-energy.com
   Redirect 301 /content/multimedia/_files/downloads/Consolidated%20catalog_0512.pdf http://www.ge-energy.com
-  Redirect 301 /filtration/?$ http://www.ge-energy.com
+  Redirect 301 /filtration http://www.ge-energy.com
   Redirect 301 /index.jsp http://www.ge-energy.com
   Redirect 301 /insights/index.jsp http://www.ge-energy.com
   Redirect 301 /privacy.jsp http://www.ge-energy.com
-  Redirect 301 /products_and_services/?$ http://www.ge-energy.com
+  Redirect 301 /products_and_services http://www.ge-energy.com
+  Redirect 301 /products_and_services/ http://www.ge-energy.com
   Redirect 301 /products_and_services/index.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/products/air_filtration/aftermarket_replacement_parts.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/products/chemical_injection_pumps/texsteam_gas_pneumatic_chemical_injection_pump.jsp http://www.ge-energy.com
-  Redirect 301 /products_and_services/products/circuit_breakers/?$ http://www.ge-energy.com
-  Redirect 301 /products_and_services/products/compressors/?$ http://www.ge-energy.com
+  Redirect 301 /products_and_services/products/circuit_breakers http://www.ge-energy.com
+  Redirect 301 /products_and_services/products/circuit_breakers/ http://www.ge-energy.com
+
+  Redirect 301 /products_and_services/products/compressors http://www.ge-energy.com
+  Redirect 301 /products_and_services/products/compressors/ http://www.ge-energy.com
   Redirect 301 /products_and_services/products/compressors/he_s_compressor.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/products/compressors/index.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/products/compressors/integrally_geared.jsp http://www.ge-energy.com
@@ -151,21 +156,25 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/controls_plant_and_turbine_generators/index.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/products/environmental_products/index.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/products/gas_turbines_heavy_duty/ms5001_gas_turbine.jsp http://www.ge-energy.com
-  Redirect 301 /products_and_services/products/gas_turbines_small_heavy_duty/?$ http://www.ge-energy.com
+  Redirect 301 /products_and_services/products/gas_turbines_small_heavy_duty http://www.ge-energy.com
+  Redirect 301 /products_and_services/products/gas_turbines_small_heavy_duty/ http://www.ge-energy.com
   Redirect 301 /products_and_services/products/gas_turbines_small_heavy_duty/ge102_gas_turbine.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/products/gas_turbines_small_heavy_duty/index.jsp http://www.ge-energy.com
-  Redirect 301 /products_and_services/products/metering_natural_gas/?$ http://www.ge-energy.com
+  Redirect 301 /products_and_services/products/metering_natural_gas http://www.ge-energy.com
+  Redirect 301 /products_and_services/products/metering_natural_gas/ http://www.ge-energy.com
   Redirect 301 /products_and_services/products/valves_control_and_safety/masoneilan_35002_series_camflex_rotary_control_valve.jsp http://www.ge-energy.com
   Redirect 301 /products_and_services/services/plant_and_unit_control_aftermarket/technical_information_letters.jsp http://www.ge-energy.com
   Redirect 301 /sitemap.jsp http://www.ge-energy.com
-  Redirect 301 /solutions/?$ http://www.ge-energy.com
+  Redirect 301 /solutions http://www.ge-energy.com
+  Redirect 301 /solutions/ http://www.ge-energy.com
   Redirect 301 /solutions/index.jsp http://www.ge-energy.com
   Redirect 301 /solutions/industrial_cogeneration.jsp http://www.ge-energy.com
   Redirect 301 /solutions/regions/india.jsp http://www.ge-energy.com
   Redirect 301 /solutions/regions/united_states.jsp http://www.ge-energy.com
   Redirect 301 /subscribe.jsp http://www.ge-energy.com
   Redirect 301 /terms.jsp http://www.ge-energy.com
-  Redirect 301 /tools_and_training/?$ http://www.ge-energy.com
+  Redirect 301 /tools_and_training http://www.ge-energy.com
+  Redirect 301 /tools_and_training/ http://www.ge-energy.com
   Redirect 301 /tools_and_training/index.jsp http://www.ge-energy.com
   Redirect 301 /tools_and_training/tools/ge_reference_documents.jsp http://www.ge-energy.com
   Redirect 301 /tools_and_training/tools/materials_management.jsp http://www.ge-energy.com
@@ -175,7 +184,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /content/multimedia/_files/downloads/Consolidated_Power_Srvc_Valves_brochure_0512.pdf http://www.ge-mcs.com
   Redirect 301 /content/multimedia/_files/downloads/Masoneilan_35002_CamflexII_CntrlValve_techSpec_0912.pdf http://www.ge-mcs.com
   Redirect 301 /content/multimedia/_files/downloads/Masoneilan_process_valves_cndnsd_catalog_0512.pdf http://www.ge-mcs.com
-  Redirect 301 /products_and_services/products/bently_nevada_asset_condition_monitoring/?$ http://www.ge-mcs.com
+  Redirect 301 /products_and_services/products/bently_nevada_asset_condition_monitoring http://www.ge-mcs.com
+  Redirect 301 /products_and_services/products/bently_nevada_asset_condition_monitoring/ http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/bently_nevada_asset_condition_monitoring/index.jsp http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/bently_nevada_asset_condition_monitoring/monitoring_systems.jsp http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/compressors/oil_free_screw_compressors.jsp http://www.ge-mcs.com
@@ -191,7 +201,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/metering_natural_gas/dresser_specialty_meters.jsp http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/metering_natural_gas/dresser_turbine_meters.jsp http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/oil_and_gas_reducing_and_metering_systems/index.jsp http://www.ge-mcs.com
-  Redirect 301 /products_and_services/products/sensors_and_measurement/?$ http://www.ge-mcs.com
+  Redirect 301 /products_and_services/products/sensors_and_measurement http://www.ge-mcs.com
+  Redirect 301 /products_and_services/products/sensors_and_measurement/ http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/sensors_and_measurement/index.jsp http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/sensors_and_measurement/sensors_and_measurement_pressure_and_level.jsp http://www.ge-mcs.com
   Redirect 301 /products_and_services/products/valves_control_and_safety/becker_emergency_shutdown_valve.jsp http://www.ge-mcs.com
@@ -224,13 +235,17 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/services/valve_services/masoneilan_consolidated_valves_oem_parts.jsp http://www.ge-mcs.com
   Redirect 301 /tools_and_training/tools/measurement_and_control_solutions_download_center.jsp http://www.ge-mcs.com
 
-  Redirect 301 http://www.ge-energy.com/products_and_services/products/solar_power/?$ https://info.gepower.com/Solar.html
+  Redirect 301 http://www.ge-energy.com/products_and_services/products/solar_power https://info.gepower.com/Solar.html
+  Redirect 301 http://www.ge-energy.com/products_and_services/products/solar_power/ https://info.gepower.com/Solar.html
 
   Redirect 301 /nuclear https://nuclear.gepower.com
-  Redirect 301 /products_and_services/products/nuclear_energy/?$ https://nuclear.gepower.com
+  Redirect 301 /products_and_services/products/nuclear_energy https://nuclear.gepower.com
+  Redirect 301 /products_and_services/products/nuclear_energy/ https://nuclear.gepower.com
+
   Redirect 301 /products_and_services/products/nuclear_energy/index.jsp https://nuclear.gepower.com
   Redirect 301 /products_and_services/services/power_plant_operation_and_maintenance_services/index.jsp https://nuclear.gepower.com
-  Redirect 301 /products_and_services/products/nuclear_power_plants/?$  https://nuclear.gepower.com/build-a-plant.html
+  Redirect 301 /products_and_services/products/nuclear_power_plants  https://nuclear.gepower.com/build-a-plant.html
+  Redirect 301 /products_and_services/products/nuclear_power_plants/  https://nuclear.gepower.com/build-a-plant.html
   Redirect 301 /products_and_services/products/nuclear_power_plants/index.jsp https://nuclear.gepower.com/build-a-plant.html
   Redirect 301 /content/multimedia/_files/downloads/ABWR%20General%20Description%20Book.pdf https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/abwr.html
   Redirect 301 /content/multimedia/_files/downloads/dataform_1970410478_2809806.pdf https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/abwr.html
@@ -243,7 +258,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /content/multimedia/_files/downloads/ESBWR%20Passive%20Safety%20Fact%20Sheet%20-%20GEA19489D.pdf https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/esbwr.html
   Redirect 301 /products_and_services/products/nuclear_energy/esbwr_nuclear_reactor.jsp https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/esbwr.html
   Redirect 301 /products_and_services/products/nuclear_power_plants/ESBWR_Nuclear_Power_Plant.jsp https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/esbwr.html
-  Redirect 301 /products_and_services/products/nuclear_fuel_cycle/?$  https://nuclear.gepower.com/fuel-a-plant.html
+  Redirect 301 /products_and_services/products/nuclear_fuel_cycle  https://nuclear.gepower.com/fuel-a-plant.html
+  Redirect 301 /products_and_services/products/nuclear_fuel_cycle/  https://nuclear.gepower.com/fuel-a-plant.html
   Redirect 301 /products_and_services/products/nuclear_fuel_cycle/index.jsp https://nuclear.gepower.com/fuel-a-plant.html
   Redirect 301 /content/multimedia/_files/downloads/dataform_2053713368_2809794.pdf https://nuclear.gepower.com/fuel-a-plant/products/gle.html
   Redirect 301 /products_and_services/products/nuclear_fuel_cycle/Global_Laser_Enrichment.jsp https://nuclear.gepower.com/fuel-a-plant/products/gle.html
@@ -256,7 +272,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /content/multimedia/_files/downloads/Telescoping%20Shroud%20Scanner.pdf  https://nuclear.gepower.com/service-and-optimize/outage-services/all-outage-services.html
   Redirect 301 /products_and_services/services/nuclear_energy_services/nuclear_outage_management_services.jsp https://nuclear.gepower.com/service-and-optimize/outage-services/all-outage-services.html
   Redirect 301 /products_and_services/products/radiation_measurement/radiation_measurement_nuclear_reactor_instrumentation.jsp  https://nuclear.gepower.com/service-and-optimize/solutions/all-solutions.html
-  Redirect 301 /products_and_services/services/nuclear_energy_services/?$ https://nuclear.gepower.com/service-and-optimize/solutions/all-solutions.html
+  Redirect 301 /products_and_services/services/nuclear_energy_services https://nuclear.gepower.com/service-and-optimize/solutions/all-solutions.html
+  Redirect 301 /products_and_services/services/nuclear_energy_services/ https://nuclear.gepower.com/service-and-optimize/solutions/
   Redirect 301 /products_and_services/services/nuclear_energy_services/index.jsp  https://nuclear.gepower.com/service-and-optimize/solutions/all-solutions.html
   Redirect 301 /products_and_services/services/nuclear_energy_services/nuclear_reactor_services.jsp https://nuclear.gepower.com/service-and-optimize/solutions/all-solutions.html
   Redirect 301 /products_and_services/services/nuclear_energy_services/nuclear_services_asset_management.jsp  https://nuclear.gepower.com/service-and-optimize/solutions/all-solutions/long-term-asset-management.html
@@ -274,11 +291,14 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/gasification/gasification_make_the_most_of_your_low_cost_carbon_feedstocks.jsp https://powergen.gepower.com/
   Redirect 301 /solutions/industries/power_generation.jsp https://powergen.gepower.com/
   Redirect 301 /solutions/refinery_gasification.jsp https://powergen.gepower.com/
-  Redirect 301 /products_and_services/services/power_generation_services/?$ https://powergen.gepower.com/index.html
-  Redirect 301 /products_and_services/services/power_plant_operation_and_maintenance_services/?$  https://powergen.gepower.com/index.html
+  Redirect 301 /products_and_services/services/power_generation_services https://powergen.gepower.com/index.html
+  Redirect 301 /products_and_services/services/power_generation_services/ https://powergen.gepower.com/index.html
+  Redirect 301 /products_and_services/services/power_plant_operation_and_maintenance_services  https://powergen.gepower.com/index.html
+  Redirect 301 /products_and_services/services/power_plant_operation_and_maintenance_services/  https://powergen.gepower.com/index.html
   Redirect 301 /solutions/power_generation.jsp  https://powergen.gepower.com/index.html
   Redirect 301 /products_and_services/services/power_generation_services/outage_services.jsp  https://powergen.gepower.com/maintain-optimize/services/gas-turbines/outage-services.html
-  Redirect 301 /products_and_services/services/gas_turbines_power_generation_services/?$  https://powergen.gepower.com/maintain-optimize/services/gas-turbines/overview.html
+  Redirect 301 /products_and_services/services/gas_turbines_power_generation_services  https://powergen.gepower.com/maintain-optimize/services/gas-turbines/overview.html
+  Redirect 301 /products_and_services/services/gas_turbines_power_generation_services/  https://powergen.gepower.com/maintain-optimize/services/gas-turbines/overview.html
   Redirect 301 /products_and_services/services/gas_turbines_power_generation_services/index.jsp https://powergen.gepower.com/maintain-optimize/services/gas-turbines/overview.html
   Redirect 301 /products_and_services/services/power_generation_services/index.jsp  https://powergen.gepower.com/maintain-optimize/services/gas-turbines/overview.html
   Redirect 301 /products_and_services/services/gas_turbines_power_generation_services/dry_low_nox_dln_combustion.jsp  https://powergen.gepower.com/maintain-optimize/services/gas-turbines/performance-upgrades/dln.html
@@ -294,7 +314,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/generators/generator_monitoring_products.jsp https://powergen.gepower.com/maintain-optimize/services/generators/monitoring-controls/generator-advanced-monitoring-solutions.html
   Redirect 301 /products_and_services/products/controls_plant_and_turbine_generators/EX2100e_generator_excitation_control.jsp https://powergen.gepower.com/maintain-optimize/services/generators/monitoring-controls/generator-controls-and-excitation-solutions.html
 
-  Redirect 301 /products_and_services/services/generator_services/?$  https://powergen.gepower.com/maintain-optimize/services/generators/overview.html
+  Redirect 301 /products_and_services/services/generator_services  https://powergen.gepower.com/maintain-optimize/services/generators/overview.html
+  Redirect 301 /products_and_services/services/generator_services/  https://powergen.gepower.com/maintain-optimize/services/generators/overview.html
   Redirect 301 /products_and_services/services/generator_services/generator_multi_vendor_services.jsp https://powergen.gepower.com/maintain-optimize/services/generators/overview.html
   Redirect 301 /products_and_services/services/generator_services/generator_capacity_uprate_solutions.jsp https://powergen.gepower.com/maintain-optimize/services/generators/uprates-conversions.html
   Redirect 301 /products_and_services/services/generator_services/generator_to_synchronous_condenser_conversion.jsp https://powergen.gepower.com/maintain-optimize/services/generators/uprates-conversions/generator-to-synchronous-condenser-conversion.html
@@ -302,7 +323,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/services/power_generation_services/commission_performance_testing.jsp https://powergen.gepower.com/maintain-optimize/services/steam-turbines/field-services/thermal-performance-testing.html
   Redirect 301 /products_and_services/services/steam_turbines_power_generation_services/steam_turbine_outage_solutions.jsp  https://powergen.gepower.com/maintain-optimize/services/steam-turbines/outage-services.html
   Redirect 301 /products_and_services/services/steam_turbines_power_generation_services/steam_turbine_outage_major.jsp  https://powergen.gepower.com/maintain-optimize/services/steam-turbines/outage-services/steam-path-audit.html
-  Redirect 301 /products_and_services/services/steam_turbines_power_generation_services/?$  https://powergen.gepower.com/maintain-optimize/services/steam-turbines/overview.html
+  Redirect 301 /products_and_services/services/steam_turbines_power_generation_services  https://powergen.gepower.com/maintain-optimize/services/steam-turbines/overview.html
+  Redirect 301 /products_and_services/services/steam_turbines_power_generation_services/  https://powergen.gepower.com/maintain-optimize/services/steam-turbines/overview.html
   Redirect 301 /products_and_services/services/steam_turbines_power_generation_services/high_intermediate_pressure_upgrades.jsp https://powergen.gepower.com/maintain-optimize/services/steam-turbines/performance-upgrades.html
   Redirect 301 /products_and_services/services/steam_turbines_power_generation_services/pgs_densepack.jsp https://powergen.gepower.com/maintain-optimize/services/steam-turbines/performance-upgrades/dense-pack.html
   Redirect 301 /products_and_services/services/steam_turbines_power_generation_services/low_pressure_lp_upgrades.jsp  https://powergen.gepower.com/maintain-optimize/services/steam-turbines/performance-upgrades/low-pressure.html
@@ -319,12 +341,14 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/gas_turbines_heavy_duty/9e_heavy_duty_gas_turbine.jsp  https://powergen.gepower.com/plan-build/products/gas-turbines/9e-03-gas-turbine.html
   Redirect 301 /products_and_services/products/gas_turbines_heavy_duty/9FA_heavy_duty_gas_turbine.jsp https://powergen.gepower.com/plan-build/products/gas-turbines/9f-03-gas-turbine.html
   Redirect 301 /products_and_services/products/gas_turbines_heavy_duty/9fb_heavy_duty_gas_turbine.jsp https://powergen.gepower.com/plan-build/products/gas-turbines/9f-05-gas-turbine.html
-  Redirect 301 /products_and_services/products/gas_turbines_heavy_duty/?$ https://powergen.gepower.com/plan-build/products/gas-turbines/index.html
+  Redirect 301 /products_and_services/products/gas_turbines_heavy_duty https://powergen.gepower.com/plan-build/products/gas-turbines/index.html
+  Redirect 301 /products_and_services/products/gas_turbines_heavy_duty/ https://powergen.gepower.com/plan-build/products/gas-turbines/index.html
   Redirect 301 /products_and_services/products/gas_turbines_heavy_duty/index.jsp  https://powergen.gepower.com/plan-build/products/gas-turbines/index.html
   Redirect 301 /products_and_services/products/gasification/syngas_turbine.jsp  https://powergen.gepower.com/plan-build/products/gas-turbines/index.html
   Redirect 301 /products_and_services/products/generators/air_cooled_generators.jsp https://powergen.gepower.com/plan-build/products/generators/air-cooled-generators.html
   Redirect 301 /products_and_services/products/generators/hydrogen_cooled_generator.jsp https://powergen.gepower.com/plan-build/products/generators/hydrogen-cooled.html
-  Redirect 301 /products_and_services/products/generators/?$  https://powergen.gepower.com/plan-build/products/generators/index.html
+  Redirect 301 /products_and_services/products/generators  https://powergen.gepower.com/plan-build/products/generators/index.html
+  Redirect 301 /products_and_services/products/generators/  https://powergen.gepower.com/plan-build/products/generators/index.html
   Redirect 301 /products_and_services/products/generators/index.jsp https://powergen.gepower.com/plan-build/products/generators/index.html
   Redirect 301 /products_and_services/products/generators/liquid_cooled_generators.jsp  https://powergen.gepower.com/plan-build/products/generators/water-cooled-generators.html
   Redirect 301 /products_and_services/products/steam_turbines/a5_a9_series.jsp  https://powergen.gepower.com/plan-build/products/steam-turbines/a450-a650-steam-turbine.html
@@ -332,7 +356,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/steam_turbines/combined_cycle_d_series.jsp https://powergen.gepower.com/plan-build/products/steam-turbines/d400-d600-steam-turbine.html
   Redirect 301 /products_and_services/products/steam_turbines/combined_cycle_g_series.jsp https://powergen.gepower.com/plan-build/products/steam-turbines/d400-d600-steam-turbine.html
   Redirect 301 /products_and_services/products/steam_turbines/109D14_steam_turbine.jsp  https://powergen.gepower.com/plan-build/products/steam-turbines/d650-steam-turbine.html
-  Redirect 301 /products_and_services/products/steam_turbines/?$  https://powergen.gepower.com/plan-build/products/steam-turbines/index.html
+  Redirect 301 /products_and_services/products/steam_turbines  https://powergen.gepower.com/plan-build/products/steam-turbines/index.html
+  Redirect 301 /products_and_services/products/steam_turbines/  https://powergen.gepower.com/plan-build/products/steam-turbines/index.html
   Redirect 301 /products_and_services/products/steam_turbines/biomass_steam_turbines.jsp  https://powergen.gepower.com/plan-build/products/steam-turbines/index.html
   Redirect 301 /products_and_services/products/steam_turbines/boiler_pumps.jsp  https://powergen.gepower.com/plan-build/products/steam-turbines/index.html
   Redirect 301 /products_and_services/products/steam_turbines/combined_cycle_c_series.jsp https://powergen.gepower.com/plan-build/products/steam-turbines/index.html
@@ -406,7 +431,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /content/multimedia/_files/downloads/GEA31063_Wind_2.85_103_Brochure_R4.pdf  https://renewables.gepower.com/wind-energy.html
 
   Redirect 301 /content/multimedia/_files/downloads/wind_energy_basics.pdf  https://renewables.gepower.com/wind-energy.html
-  Redirect 301 /products_and_services/services/wind_services/?$ https://renewables.gepower.com/wind-energy/services.html
+  Redirect 301 /products_and_services/services/wind_services https://renewables.gepower.com/wind-energy/services.html
+  Redirect 301 /products_and_services/services/wind_services/ https://renewables.gepower.com/wind-energy/services.html
   Redirect 301 /products_and_services/services/wind_services/index.jsp  https://renewables.gepower.com/wind-energy/services.html
   Redirect 301 /products_and_services/services/wind_services/windlayout.jsp https://renewables.gepower.com/wind-energy/services.html
   Redirect 301 /products_and_services/services/wind_services/powerup.jsp  https://renewables.gepower.com/wind-energy/services/platform-upgrades.html
@@ -425,7 +451,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /contact.jsp?ref=2.75%20-%20120%20Wind%20Turbine&breadcrumb=Products+&+Services+/+Wind+Turbines+/+2.75+-+120+Wind+Turbine+=  https://renewables.gepower.com/wind-energy/turbines.html
   Redirect 301 /contact.jsp?ref=GE&#39;s%202.75%20-%20120%20Wind%20Turbine=&breadcrumb=Products+&+Services+/+Wind+Turbines+/+GE's+2.75+-+120+Wind+Turbine+= https://renewables.gepower.com/wind-energy/turbines.html
   Redirect 301 /contact.jsp?ref=Wind%20Services&breadcrumb=Products+&+Services+/+Wind+Services+=  https://renewables.gepower.com/wind-energy/turbines.html
-  Redirect 301 /products_and_services/products/wind_turbines/?$ https://renewables.gepower.com/wind-energy/turbines.html
+  Redirect 301 /products_and_services/products/wind_turbines https://renewables.gepower.com/wind-energy/turbines.html
+  Redirect 301 /products_and_services/products/wind_turbines/ https://renewables.gepower.com/wind-energy/turbines.html
   Redirect 301 /products_and_services/products/wind_turbines/2.85_100_and_2.85_103_wind_turbines.jsp  https://renewables.gepower.com/wind-energy/turbines.html
   Redirect 301 /products_and_services/products/wind_turbines/fourone_113.jsp  https://renewables.gepower.com/wind-energy/turbines.html
   Redirect 301 /products_and_services/products/wind_turbines/ge_1.5_77_wind_turbine.jsp https://renewables.gepower.com/wind-energy/turbines.html
@@ -450,10 +477,13 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /solutions/case_studies/ges_jenbacher_gas_engines_turn_waste_to_energy.jsp https://www.ge-distributedpower.com/customer-stories
   Redirect 301 /solutions/gas_turbines_flexible_fuel_solutions.jsp  https://www.ge-distributedpower.com/products
   Redirect 301 /tools_and_training/tools/aeroderivative_gas_turbine_configurator.jsp  https://www.ge-distributedpower.com/products
-  Redirect 301 /products_and_services/products/gas_engines_gas_compression/?$ https://www.ge-distributedpower.com/products/gas-compression-mechanical-drive
-  Redirect 301 /products_and_services/products/gas_engines_power_generation/?$  https://www.ge-distributedpower.com/products/power-generation
+  Redirect 301 /products_and_services/products/gas_engines_gas_compression https://www.ge-distributedpower.com/products/gas-compression-mechanical-drive
+  Redirect 301 /products_and_services/products/gas_engines_gas_compression/ https://www.ge-distributedpower.com/products/gas-compression-mechanical-drive
+  Redirect 301 /products_and_services/products/gas_engines_power_generation  https://www.ge-distributedpower.com/products/power-generation
+  Redirect 301 /products_and_services/products/gas_engines_power_generation/  https://www.ge-distributedpower.com/products/power-generation
   Redirect 301 /products_and_services/products/gas_turbines_aeroderivative  https://www.ge-distributedpower.com/products/power-generation
-  Redirect 301 /products_and_services/products/gas_turbines_aeroderivative/?$ https://www.ge-distributedpower.com/products/power-generation
+  Redirect 301 /products_and_services/products/gas_turbines_aeroderivative https://www.ge-distributedpower.com/products/power-generation
+  Redirect 301 /products_and_services/products/gas_turbines_aeroderivative/ https://www.ge-distributedpower.com/products/power-generation
   Redirect 301 /products_and_services/services/gas_turbine_services_aeroderivative/aero_balance_of_plant.jsp  https://www.ge-distributedpower.com/products/power-generation
   Redirect 301 /products_and_services/products/gas_engines_power_generation/gas_engines_jenbacher_type_3.jsp  https://www.ge-distributedpower.com/products/power-generation/jenbacher-type-3-633-1063kw
   Redirect 301 /products_and_services/services/gas_turbine_services_aeroderivative/repower.jsp  https://www.ge-distributedpower.com/products/power-generation/lm1800e
@@ -461,7 +491,8 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /content/multimedia/_files/downloads/GEA18090B%20AEROC.pdf https://www.ge-distributedpower.com/services/lifetime-service-plus
   Redirect 301 /products_and_services/services/gas_engines_power_generation_services/gas_engines_overhaul.jsp https://www.ge-distributedpower.com/services/lifetime-service-plus
   Redirect 301 /products_and_services/services/gas_engines_power_generation_services/spare_parts.jsp  https://www.ge-distributedpower.com/services/lifetime-service-plus
-  Redirect 301 /products_and_services/services/gas_turbine_services_aeroderivative/?$ https://www.ge-distributedpower.com/services/lifetime-service-plus
+  Redirect 301 /products_and_services/services/gas_turbine_services_aeroderivative https://www.ge-distributedpower.com/services/lifetime-service-plus
+  Redirect 301 /products_and_services/services/gas_turbine_services_aeroderivative/ https://www.ge-distributedpower.com/services/lifetime-service-plus
   Redirect 301 /products_and_services/services/gas_turbine_services_aeroderivative/aero_contractual_service_agreements.jsp  https://www.ge-distributedpower.com/services/lifetime-service-plus
   Redirect 301 /products_and_services/services/gas_turbine_services_aeroderivative/aeroderivative_field_services.jsp  https://www.ge-distributedpower.com/services/lifetime-service-plus
 
@@ -488,8 +519,9 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/industries/oil_and_gas_midstream.jsp  https://www.geoilandgas.com/
   Redirect 301 /products_and_services/industries/oil_and_gas_upstream.jsp https://www.geoilandgas.com/
   Redirect 301 /products_and_services/industries/oil_and_gas_upstream.jsp https://www.geoilandgas.com/
-  Redirect 301 /products_and_services/products/chemical_injection_pumps/?$  https://www.geoilandgas.com/
-  Redirect 301 /products_and_services/products/chemical_injection_pumps/?$  https://www.geoilandgas.com/
+  Redirect 301 /products_and_services/products/chemical_injection_pumps  https://www.geoilandgas.com/
+  Redirect 301 /products_and_services/products/chemical_injection_pumps/  https://www.geoilandgas.com/
+  
   Redirect 301 /products_and_services/products/chemical_injection_pumps/index.jsp https://www.geoilandgas.com/
   Redirect 301 /products_and_services/products/chemical_injection_pumps/index.jsp https://www.geoilandgas.com/
   Redirect 301 /products_and_services/products/chemical_injection_pumps/texsteam_electric_driven_injection_pump.jsp https://www.geoilandgas.com/
@@ -511,18 +543,20 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /insights/industry_insights/the_age_of_gas.jsp https://www.geoilandgas.com/distributed-gas
   Redirect 301 /products_and_services/products/compressors/high_speed_reciprocating_compressor.jsp  https://www.geoilandgas.com/distributed-gas/processing
   Redirect 301 /products_and_services/services/oil_and_gas_services/micro_lng_integrated_plant.jsp  https://www.geoilandgas.com/distributed-gas/processing/small-scale-lng-liquefaction-plant
-  Redirect 301 /products_and_services/products/capital_drilling_equipment/?$  https://www.geoilandgas.com/drilling
+  Redirect 301 /products_and_services/products/capital_drilling_equipment  https://www.geoilandgas.com/drilling
+  Redirect 301 /products_and_services/products/capital_drilling_equipment/  https://www.geoilandgas.com/drilling
   Redirect 301 /products_and_services/products/capital_drilling_equipment/hpc_compact_ram_bop.jsp https://www.geoilandgas.com/drilling
   Redirect 301 /products_and_services/products/capital_drilling_equipment/index.jsp https://www.geoilandgas.com/drilling
   Redirect 301 /tools_and_training/training/drilling_measurements_training_program.jsp  https://www.geoilandgas.com/drilling
-  Redirect 301 /products_and_services/products/wireline_systems/?$  https://www.geoilandgas.com/drilling/downhole-tools
+  Redirect 301 /products_and_services/products/wireline_systems  https://www.geoilandgas.com/drilling/downhole-tools
+  Redirect 301 /products_and_services/products/wireline_systems/  https://www.geoilandgas.com/drilling/downhole-tools
   Redirect 301 /products_and_services/products/wireline_systems/index.jsp https://www.geoilandgas.com/drilling/downhole-tools
   Redirect 301 /products_and_services/products/wireline_systems/index.jsp?region=us https://www.geoilandgas.com/drilling/downhole-tools
   Redirect 301 /products_and_services/products/wireline_systems/multifinger_imaging_tool.jsp  https://www.geoilandgas.com/drilling/downhole-tools
   Redirect 301 /products_and_services/products/drilling_measurements/index.jsp  https://www.geoilandgas.com/drilling/drilling-controls
   Redirect 301 /products_and_services/products/drilling_measurements/mwd_systems.jsp  https://www.geoilandgas.com/drilling/drilling-controls
-  Redirect 301 /products_and_services/services/drilling_and_production_services/  https://www.geoilandgas.com/drilling/drilling-production/chemical-injection-pumps
   Redirect 301 /products_and_services/services/drilling_and_production_services  https://www.geoilandgas.com/drilling/drilling-production/chemical-injection-pumps
+  Redirect 301 /products_and_services/services/drilling_and_production_services/  https://www.geoilandgas.com/drilling/drilling-production/chemical-injection-pumps
   Redirect 301 /solutions/offshore_production_platform.jsp  https://www.geoilandgas.com/drilling/offshore-drilling
   Redirect 301 /solutions/land_drilling_production.jsp  https://www.geoilandgas.com/drilling/onshore-drilling
   Redirect 301 /solutions/lng_receiving_terminal.jsp  https://www.geoilandgas.com/liquefied-natural-gas
@@ -530,17 +564,22 @@ DirectoryIndex index.php index.html index.htm
 
 
   Redirect 301 /products_and_services/products/valves_control_and_safety/masoneilan_svi_ii_ap_performance_digital_positioner.jsp  https://www.geoilandgas.com/oilfield
-  Redirect 301 /products_and_services/products/electric_submersible_pumping_systems/?$  https://www.geoilandgas.com/oilfield/artificial-lift
+  Redirect 301 /products_and_services/products/electric_submersible_pumping_systems  https://www.geoilandgas.com/oilfield/artificial-lift
+  Redirect 301 /products_and_services/products/electric_submersible_pumping_systems/  https://www.geoilandgas.com/oilfield/artificial-lift
   Redirect 301 /products_and_services/products/electric_submersible_pumping_systems/highefficiencypumps.jsp https://www.geoilandgas.com/oilfield/artificial-lift
   Redirect 301 /products_and_services/products/electric_submersible_pumping_systems/index.jsp https://www.geoilandgas.com/oilfield/artificial-lift
   Redirect 301 /products_and_services/services/artificial_lift_services  https://www.geoilandgas.com/oilfield/artificial-lift
+  Redirect 301 /products_and_services/services/artificial_lift_services/  https://www.geoilandgas.com/oilfield/artificial-lift
   Redirect 301 /solutions/carbon_capture_sequestration.jsp  https://www.geoilandgas.com/oilfield/carbon-sequestration-co2-enhanced-oil-recovery
+  Redirect 301 /products_and_services/products/centrifugal_pumps https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
   Redirect 301 /products_and_services/products/centrifugal_pumps/ https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
+  
   Redirect 301 /products_and_services/products/centrifugal_pumps/index.jsp  https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
   Redirect 301 /products_and_services/products/compressors/roots_oib_centrifugal_compressor.jsp https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
   Redirect 301 /products_and_services/products/air_filtration/index.jsp https://www.geoilandgas.com/oilfield/gas-processing-compression
   Redirect 301 /contact.jsp?ref=Valves%20%u2013%20Control%20&amp;%20Safety%20=&breadcrumb=Products+&+Services+/+Valves+–+Control+=&+Safety++= https://www.geoilandgas.com/oilfield/power-generation
-  Redirect 301 /products_and_services/products/valves_control_and_safety/?$ https://www.geoilandgas.com/oilfield/power-generation
+  Redirect 301 /products_and_services/products/valves_control_and_safety https://www.geoilandgas.com/oilfield/power-generation
+  Redirect 301 /products_and_services/products/valves_control_and_safety/ https://www.geoilandgas.com/oilfield/power-generation
   Redirect 301 /products_and_services/products/valves_control_and_safety/anti_surge.jsp https://www.geoilandgas.com/oilfield/power-generation
   Redirect 301 /products_and_services/products/valves_control_and_safety/becker_valve_regualtor_pilots.jsp  https://www.geoilandgas.com/oilfield/power-generation
 
@@ -559,12 +598,14 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /gasification  https://www.geoilandgas.com/pipeline-storage
   Redirect 301 /products_and_services/products/compressors/pipeline.jsp https://www.geoilandgas.com/pipeline-storage
   Redirect 301 /products_and_services/products/gas_pipeline_solutions/index.jsp https://www.geoilandgas.com/pipeline-storage
-  Redirect 301 /products_and_services/products/gasification/?$  https://www.geoilandgas.com/pipeline-storage
+  Redirect 301 /products_and_services/products/gasification  https://www.geoilandgas.com/pipeline-storage
+  Redirect 301 /products_and_services/products/gasification/  https://www.geoilandgas.com/pipeline-storage
   Redirect 301 /products_and_services/products/gasification/index.jsp https://www.geoilandgas.com/pipeline-storage
   Redirect 301 /products_and_services/products/pipeline_solutions/index.jsp https://www.geoilandgas.com/pipeline-storage
   Redirect 301 /solutions/gas_storage_plant.jsp https://www.geoilandgas.com/pipeline-storage
   Redirect 301 /products_and_services/products/compressors/axial.jsp  https://www.geoilandgas.com/pipeline-storage/gas-processing-compression/repairs-spare-parts-field-services-repair-shops-training
-  Redirect 301 /products_and_services/services/pipeline_integrity_services/?$ https://www.geoilandgas.com/pipeline-storage/pipeline-integrity-services
+  Redirect 301 /products_and_services/services/pipeline_integrity_services https://www.geoilandgas.com/pipeline-storage/pipeline-integrity-services
+  Redirect 301 /products_and_services/services/pipeline_integrity_services/ https://www.geoilandgas.com/pipeline-storage/pipeline-integrity-services
   Redirect 301 /products_and_services/services/pipeline_integrity_services/corrosion_metal_loss_characterisation.jsp  https://www.geoilandgas.com/pipeline-storage/pipeline-integrity-services
   Redirect 301 /products_and_services/services/pipeline_integrity_services/hot_tapping_and_line_stopping_services.jsp https://www.geoilandgas.com/pipeline-storage/pipeline-integrity-services
   Redirect 301 /products_and_services/services/pipeline_integrity_services/index.jsp  https://www.geoilandgas.com/pipeline-storage/pipeline-integrity-services
@@ -573,14 +614,16 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/industries/chemicals_petrochemicals_fertilizers.jsp https://www.geoilandgas.com/refinery-and-petrochemical
   Redirect 301 /products_and_services/industries/oil_and_gas_downstream_refining.jsp  https://www.geoilandgas.com/refinery-and-petrochemical
   Redirect 301 /solutions/refinery_plant.jsp  https://www.geoilandgas.com/refinery-and-petrochemical
-  Redirect 301 /products_and_services/products/blowers/?$ https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
+  Redirect 301 /products_and_services/products/blowers https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
+  Redirect 301 /products_and_services/products/blowers/ https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
   Redirect 301 /products_and_services/products/blowers/index.jsp  https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
   Redirect 301 /products_and_services/products/blowers/roots_blower_packages.jsp  https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
   Redirect 301 /products_and_services/products/blowers/roots_positive_displacement_blowers.jsp  https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
   Redirect 301 /products_and_services/products/compressors/api_618_process_compressor.jsp https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
   Redirect 301 /products_and_services/products/compressors/ldpe_hyper_compressors.jsp https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer
   Redirect 301 /products_and_services/products/compressors/api_618_natural_gas_compressor.jsp https://www.geoilandgas.com/refinery-petrochemical/refinery-petrochemical-fertilizer/ldpe-hypercompressors
-  Redirect 301 /products_and_services/services/oil_and_gas_services/?$  https://www.geoilandgas.com/service/ge-oil-gas-customer-training-partner-talent-development
+  Redirect 301 /products_and_services/services/oil_and_gas_services  https://www.geoilandgas.com/service/ge-oil-gas-customer-training-partner-talent-development
+  Redirect 301 /products_and_services/services/oil_and_gas_services/  https://www.geoilandgas.com/service/ge-oil-gas-customer-training-partner-talent-development
   Redirect 301 /products_and_services/services/oil_and_gas_services/index.jsp https://www.geoilandgas.com/service/ge-oil-gas-customer-training-partner-talent-development
   Redirect 301 /tools_and_training/tools/oil_and_gas_ecat_spare_parts_system.jsp  https://www.geoilandgas.com/service/ge-oil-gas-customer-training-partner-talent-development
   Redirect 301 /tools_and_training/training/oil_and_gas_technical_training.jsp  https://www.geoilandgas.com/service/ge-oil-gas-customer-training-partner-talent-development
@@ -591,17 +634,24 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/centrifugal_pumps/bfd_series.jsp https://www.geoilandgas.com/subsea-offshore/offshore-production/ddhf-multistage-centrifugal-pump
   Redirect 301 /products_and_services/products/centrifugal_pumps/ddhm_series.jsp  https://www.geoilandgas.com/subsea-offshore/offshore-production/ddhm-high-pressure-diffuser-barrel-multistage-pump
   Redirect 301 /solutions/gas_turbines_mechanical_drive.jsp https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery
-  Redirect 301 /products_and_services/products/air_cooled_heat_exchangers/?$  https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/air-cooled-heat-exchangers
+  Redirect 301 /products_and_services/products/air_cooled_heat_exchangers  https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/air-cooled-heat-exchangers
+  Redirect 301 /products_and_services/products/air_cooled_heat_exchangers/  https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/air-cooled-heat-exchangers
+  
   Redirect 301 /products_and_services/products/air_cooled_heat_exchangers/index.jsp https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/air-cooled-heat-exchangers
   Redirect 301 /seasmart.jsp  https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/seasmart-offshore-package-power-generation-or-mechanical
-  Redirect 301 /products_and_services/products/turboexpanders/?$  https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/turboexpander-compressors
-  Redirect 301 /products_and_services/products/subsea_controls_and_informatics/?$ https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
+  Redirect 301 /products_and_services/products/turboexpanders  https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/turboexpander-compressors
+  Redirect 301 /products_and_services/products/turboexpanders/  https://www.geoilandgas.com/subsea-offshore/offshore-turbomachinery/turboexpander-compressors
+  
+  Redirect 301 /products_and_services/products/subsea_controls_and_informatics https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
+  Redirect 301 /products_and_services/products/subsea_controls_and_informatics/ https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
   Redirect 301 /products_and_services/products/subsea_controls_and_informatics/Flying_Leads.jsp https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
   Redirect 301 /products_and_services/products/subsea_controls_and_informatics/Hydraulic_Power_Unit.jsp https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
   Redirect 301 /products_and_services/products/subsea_controls_and_informatics/index.jsp  https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
   Redirect 301 /products_and_services/products/subsea_controls_and_informatics/Subsea_Distribution_Unit.jsp https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
   Redirect 301 /products_and_services/products/subsea_controls_and_informatics/Umbilical_Termination_Assembly.jsp https://www.geoilandgas.com/subsea-offshore/subsea-controls-informatics
-  Redirect 301 /products_and_services/products/subsea_trees_manifolds_and_connection_systems/?$ https://www.geoilandgas.com/subsea-offshore/subsea-trees-manifolds-connection-systems
+  Redirect 301 /products_and_services/products/subsea_trees_manifolds_and_connection_systems https://www.geoilandgas.com/subsea-offshore/subsea-trees-manifolds-connection-systems
+  Redirect 301 /products_and_services/products/subsea_trees_manifolds_and_connection_systems/ https://www.geoilandgas.com/subsea-offshore/subsea-trees-manifolds-connection-systems
+  
   Redirect 301 /products_and_services/products/subsea_trees_manifolds_and_connection_systems/Cluster_Manifolds.jsp https://www.geoilandgas.com/subsea-offshore/subsea-trees-manifolds-connection-systems
   Redirect 301 /products_and_services/products/subsea_trees_manifolds_and_connection_systems/index.jsp https://www.geoilandgas.com/subsea-offshore/subsea-trees-manifolds-connection-systems
   Redirect 301 /products_and_services/products/subsea_trees_manifolds_and_connection_systems/Jumpers.jsp  https://www.geoilandgas.com/subsea-offshore/subsea-trees-manifolds-connection-systems
@@ -619,8 +669,6 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /content/multimedia/_files/downloads/GEOG_Overview_brochure_THEWAYWEWORK.pdf https://www.geoilandgas.com/working-purpose
   Redirect 301 /products_and_services/services/tsc/gedispow.jsp https://www.gepower.com/
   Redirect 301 /about/power_water.jsp https://www.gepower.com/
-
-  #custom redirect end --
 
   #---- ge-energy.com start
   RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.local$
