@@ -121,23 +121,6 @@ DirectoryIndex index.php index.html index.htm
   RewriteBase /
 
 
-  #---- ge-energy.com start
-  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
-  # Don't loop anything targeting the actual mask directory, to allow
-  # for linked scripts, stylesheets etc in the static HTML
-  RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
-  # pass-through the matching file from beneath /sites/default/files/ and stop processing
-  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
-  #---- ge-energy.com end
-
-  # Redirect all users to access the site WITH the 'www.' prefix
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteCond %{HTTP_HOST} !^geog\.dev\.local [NC]
-  RewriteCond %{HTTP_HOST} !^gemc\.dev\.local [NC]
-  RewriteCond %{HTTP_HOST} !\.([a-z-]+\.[a-z]{2,6})$ [NC]
-  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-
   #custom redirect start --
   # - oil and gas redirects
 
@@ -640,9 +623,24 @@ DirectoryIndex index.php index.html index.htm
   #custom redirect end --
 
   ## CATCH-ALL REDIRECT## 
-  RewriteCond %{HTTP_HOST} ^(ge-energy.com|www.ge-energy.com) [NC]
+  #RewriteCond %{HTTP_HOST} ^(ge-energy.com|www.ge-energy.com) [NC]
+  #RewriteRule ^(.*)$ http://denver.newsite.com/$1 [R=301,L]
 
-  RewriteRule ^(.*)$ http://denver.newsite.com/$1 [R=301,L]
+  #---- ge-energy.com start
+  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
+  # Don't loop anything targeting the actual mask directory, to allow
+  # for linked scripts, stylesheets etc in the static HTML
+  RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
+  # pass-through the matching file from beneath /sites/default/files/ and stop processing
+  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
+  #---- ge-energy.com end
+
+  # Redirect all users to access the site WITH the 'www.' prefix
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} !^geog\.dev\.local [NC]
+  RewriteCond %{HTTP_HOST} !^gemc\.dev\.local [NC]
+  RewriteCond %{HTTP_HOST} !\.([a-z-]+\.[a-z]{2,6})$ [NC]
+  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
 
