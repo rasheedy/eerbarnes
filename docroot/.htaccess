@@ -144,6 +144,8 @@ DirectoryIndex index.php index.html index.htm
   #custom redirect start --
   # - oil and gas redirects
 
+  Redirect 301 /products_and_services/products/nuclear_fuel_cycle  https://nuclear.gepower.com/fuel-a-plant.html
+
   Redirect 301 /about/ge_energy_in_the_news.jsp http://www.ge-energy.com
   Redirect 301 /about/index.jsp http://www.ge-energy.com
   Redirect 301 /about/media_center.jsp http://www.ge-energy.com
@@ -262,7 +264,9 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/nuclear_energy/ https://nuclear.gepower.com
 
   Redirect 301 /products_and_services/products/nuclear_energy/index.jsp https://nuclear.gepower.com
+
   Redirect 301 /products_and_services/services/power_plant_operation_and_maintenance_services/index.jsp https://nuclear.gepower.com
+
   Redirect 301 /products_and_services/products/nuclear_power_plants  https://nuclear.gepower.com/build-a-plant.html
   Redirect 301 /products_and_services/products/nuclear_power_plants/  https://nuclear.gepower.com/build-a-plant.html
   Redirect 301 /products_and_services/products/nuclear_power_plants/index.jsp https://nuclear.gepower.com/build-a-plant.html
@@ -277,7 +281,26 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /content/multimedia/_files/downloads/ESBWR%20Passive%20Safety%20Fact%20Sheet%20-%20GEA19489D.pdf https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/esbwr.html
   Redirect 301 /products_and_services/products/nuclear_energy/esbwr_nuclear_reactor.jsp https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/esbwr.html
   Redirect 301 /products_and_services/products/nuclear_power_plants/ESBWR_Nuclear_Power_Plant.jsp https://nuclear.gepower.com/build-a-plant/products/nuclear-power-plants-overview/esbwr.html
-  Redirect 301 /products_and_services/products/nuclear_fuel_cycle  https://nuclear.gepower.com/fuel-a-plant.html
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   Redirect 301 /products_and_services/products/nuclear_fuel_cycle/  https://nuclear.gepower.com/fuel-a-plant.html
   Redirect 301 /products_and_services/products/nuclear_fuel_cycle/index.jsp https://nuclear.gepower.com/fuel-a-plant.html
   Redirect 301 /content/multimedia/_files/downloads/dataform_2053713368_2809794.pdf https://nuclear.gepower.com/fuel-a-plant/products/gle.html
@@ -553,7 +576,6 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/control_solutions_plant_and_turbomachinery/mark_vie_control_platform.jsp https://www.geoilandgas.com/
   Redirect 301 /products_and_services/products/gasification/integrated_gasification_combined_cycle.jsp  https://www.geoilandgas.com/
   Redirect 301 /salof.jsp https://www.geoilandgas.com/
-
 
   Redirect 301 /solutions/gas_to_liquids.jsp  https://www.geoilandgas.com/
   Redirect 301 /solutions/industries/oil_and_gas_upstream.jsp https://www.geoilandgas.com/
