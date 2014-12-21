@@ -121,6 +121,25 @@ DirectoryIndex index.php index.html index.htm
   RewriteBase /
 
 
+
+  #---- ge-energy.com start
+  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.local$
+  # Don't loop anything targeting the actual mask directory, to allow
+  # for linked scripts, stylesheets etc in the static HTML
+  RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
+  # pass-through the matching file from beneath /sites/default/files/ and stop processing
+  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html [PT,L]
+  #---- ge-energy.com end
+
+  
+  # Redirect all users to access the site WITH the 'www.' prefix
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} !^geog\.dev\.local [NC]
+  RewriteCond %{HTTP_HOST} !^gemc\.dev\.local [NC]
+  RewriteCond %{HTTP_HOST} !\.([a-z-]+\.[a-z]{2,6})$ [NC]
+  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
   
   #custom redirect start --
   # - oil and gas redirects
@@ -670,31 +689,13 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/services/tsc/gedispow.jsp https://www.gepower.com/
   Redirect 301 /about/power_water.jsp https://www.gepower.com/
 
-  #---- ge-energy.com start
-  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.local$
-  # Don't loop anything targeting the actual mask directory, to allow
-  # for linked scripts, stylesheets etc in the static HTML
-  RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
-  # pass-through the matching file from beneath /sites/default/files/ and stop processing
-  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html [PT,L]
-  #---- ge-energy.com end
-
   
-  # Redirect all users to access the site WITH the 'www.' prefix
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteCond %{HTTP_HOST} !^geog\.dev\.local [NC]
-  RewriteCond %{HTTP_HOST} !^gemc\.dev\.local [NC]
-  RewriteCond %{HTTP_HOST} !\.([a-z-]+\.[a-z]{2,6})$ [NC]
-  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 
   #last -- 
   #RewriteCond %{HTTP_HOST} !^(.*)\.fingerpistols\.local$ [NC]
   #RewriteRule ^(.*)$ http://www.fingerpistols.local/ [R=301,L]
   #RewriteCond %{REQUEST_URI} !"^/$"
   #RewriteRule (.+) http://%{HTTP_HOST}/ [R=301,L]
-
-
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
