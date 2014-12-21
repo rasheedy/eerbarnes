@@ -533,9 +533,9 @@ DirectoryIndex index.php index.html index.htm
   Redirect 301 /products_and_services/products/electric_submersible_pumping_systems/?$  https://www.geoilandgas.com/oilfield/artificial-lift
   Redirect 301 /products_and_services/products/electric_submersible_pumping_systems/highefficiencypumps.jsp https://www.geoilandgas.com/oilfield/artificial-lift
   Redirect 301 /products_and_services/products/electric_submersible_pumping_systems/index.jsp https://www.geoilandgas.com/oilfield/artificial-lift
-  Redirect 301 /products_and_services/services/artificial_lift_services/?$  https://www.geoilandgas.com/oilfield/artificial-lift
+  Redirect 301 /products_and_services/services/artificial_lift_services  https://www.geoilandgas.com/oilfield/artificial-lift
   Redirect 301 /solutions/carbon_capture_sequestration.jsp  https://www.geoilandgas.com/oilfield/carbon-sequestration-co2-enhanced-oil-recovery
-  Redirect 301 /products_and_services/products/centrifugal_pumps/?$ https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
+  Redirect 301 /products_and_services/products/centrifugal_pumps/ https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
   Redirect 301 /products_and_services/products/centrifugal_pumps/index.jsp  https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
   Redirect 301 /products_and_services/products/compressors/roots_oib_centrifugal_compressor.jsp https://www.geoilandgas.com/oilfield/gas-processing-and-compression/centrifugal-axial-compressors
   Redirect 301 /products_and_services/products/air_filtration/index.jsp https://www.geoilandgas.com/oilfield/gas-processing-compression
@@ -622,19 +622,16 @@ DirectoryIndex index.php index.html index.htm
 
   #custom redirect end --
 
-  ## CATCH-ALL REDIRECT## 
-  #RewriteCond %{HTTP_HOST} ^(ge-energy.com|www.ge-energy.com) [NC]
-  #RewriteRule ^(.*)$ http://denver.newsite.com/$1 [R=301,L]
-
   #---- ge-energy.com start
-  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
+  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.local$
   # Don't loop anything targeting the actual mask directory, to allow
   # for linked scripts, stylesheets etc in the static HTML
   RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
   # pass-through the matching file from beneath /sites/default/files/ and stop processing
-  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
+  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html [PT,L]
   #---- ge-energy.com end
 
+  
   # Redirect all users to access the site WITH the 'www.' prefix
   RewriteCond %{HTTP_HOST} !^www\. [NC]
   RewriteCond %{HTTP_HOST} !^geog\.dev\.local [NC]
@@ -643,29 +640,12 @@ DirectoryIndex index.php index.html index.htm
   RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
-
-# Doctor-assisted duplicate-content suicide (and inefficient, as well)
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule \.(html?|php[0-9]{0,2$)} http://www.example.com/? [R=301,L]
-
-
-
-  #---- ge-energy.com start
-  #RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
-  # Don't loop anything targeting the actual mask directory, to allow
-  # for linked scripts, stylesheets etc in the static HTML
-  #RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
-  # pass-through the matching file from beneath /sites/default/files/ and stop processing
-  #RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
-  #---- ge-energy.com end
-
-
-
-
-  #RewriteCond %{HTTP_HOST} !^(.*)\.your_domain\.com$ [NC]
-  #RewriteRule ^(.*)$ http://www.ge-energy.com/ [R=301,L]
+  #last -- 
+  #RewriteCond %{HTTP_HOST} !^(.*)\.fingerpistols\.local$ [NC]
+  #RewriteRule ^(.*)$ http://www.fingerpistols.local/ [R=301,L]
   #RewriteCond %{REQUEST_URI} !"^/$"
   #RewriteRule (.+) http://%{HTTP_HOST}/ [R=301,L]
+
 
 
   # Pass all requests not referring directly to files in the filesystem to

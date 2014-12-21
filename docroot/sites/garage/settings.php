@@ -1,6 +1,9 @@
 <?php
 
-if($_SERVER['SERVER_NAME'] == 'bronxgarage.local'){
+if($_SERVER['SERVER_NAME'] == 'bronxgarage.local' || 
+	$_SERVER['SERVER_NAME'] == 'ge-energy.com' || 
+	$_SERVER['SERVER_NAME'] == 'www.fingerpistols.local' || 
+	$_SERVER['SERVER_NAME'] == 'www.ge-energy.com'){
 	$databases = array (
 	  'default' => 
 	  array (
