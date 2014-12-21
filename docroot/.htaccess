@@ -121,14 +121,14 @@ DirectoryIndex index.php index.html index.htm
   RewriteBase /
 
 
-#---- ge-energy.com start
-RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
-# Don't loop anything targeting the actual mask directory, to allow
-# for linked scripts, stylesheets etc in the static HTML
-RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
-# pass-through the matching file from beneath /sites/default/files/ and stop processing
-RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/$1 [PT,L]
-#---- ge-energy.com end
+  #---- ge-energy.com start
+  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
+  # Don't loop anything targeting the actual mask directory, to allow
+  # for linked scripts, stylesheets etc in the static HTML
+  RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
+  # pass-through the matching file from beneath /sites/default/files/ and stop processing
+  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
+  #---- ge-energy.com end
 
   # Redirect all users to access the site WITH the 'www.' prefix
   RewriteCond %{HTTP_HOST} !^www\. [NC]
@@ -538,7 +538,8 @@ RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/$1 [PT,L]
   Redirect 301 /products_and_services/products/wireline_systems/multifinger_imaging_tool.jsp  https://www.geoilandgas.com/drilling/downhole-tools
   Redirect 301 /products_and_services/products/drilling_measurements/index.jsp  https://www.geoilandgas.com/drilling/drilling-controls
   Redirect 301 /products_and_services/products/drilling_measurements/mwd_systems.jsp  https://www.geoilandgas.com/drilling/drilling-controls
-  Redirect 301 /products_and_services/services/drilling_and_production_services/?$  https://www.geoilandgas.com/drilling/drilling-production/chemical-injection-pumps
+  Redirect 301 /products_and_services/services/drilling_and_production_services/  https://www.geoilandgas.com/drilling/drilling-production/chemical-injection-pumps
+  Redirect 301 /products_and_services/services/drilling_and_production_services  https://www.geoilandgas.com/drilling/drilling-production/chemical-injection-pumps
   Redirect 301 /solutions/offshore_production_platform.jsp  https://www.geoilandgas.com/drilling/offshore-drilling
   Redirect 301 /solutions/land_drilling_production.jsp  https://www.geoilandgas.com/drilling/onshore-drilling
   Redirect 301 /solutions/lng_receiving_terminal.jsp  https://www.geoilandgas.com/liquefied-natural-gas
@@ -637,6 +638,37 @@ RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/$1 [PT,L]
   Redirect 301 /about/power_water.jsp https://www.gepower.com/
 
   #custom redirect end --
+
+  ## CATCH-ALL REDIRECT## 
+  RewriteCond %{HTTP_HOST} ^(ge-energy.com|www.ge-energy.com) [NC]
+
+  RewriteRule ^(.*)$ http://denver.newsite.com/$1 [R=301,L]
+
+
+
+# Doctor-assisted duplicate-content suicide (and inefficient, as well)
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule \.(html?|php[0-9]{0,2$)} http://www.example.com/? [R=301,L]
+
+
+
+  #---- ge-energy.com start
+  #RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.dev$
+  # Don't loop anything targeting the actual mask directory, to allow
+  # for linked scripts, stylesheets etc in the static HTML
+  #RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
+  # pass-through the matching file from beneath /sites/default/files/ and stop processing
+  #RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html$1 [PT,L]
+  #---- ge-energy.com end
+
+
+
+
+  #RewriteCond %{HTTP_HOST} !^(.*)\.your_domain\.com$ [NC]
+  #RewriteRule ^(.*)$ http://www.ge-energy.com/ [R=301,L]
+  #RewriteCond %{REQUEST_URI} !"^/$"
+  #RewriteRule (.+) http://%{HTTP_HOST}/ [R=301,L]
+
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
