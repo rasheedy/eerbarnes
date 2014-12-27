@@ -16,5 +16,6 @@ $sites['fingerpistols.dev'] = 'garage';
 $sites['www.bronxgarage.dev'] = 'garage';
 $sites['www.fingerpistols.dev'] = 'garage';
 
+$sites['rasheed.local'] = 'rasheed';
 
 
