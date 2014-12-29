@@ -123,14 +123,33 @@ DirectoryIndex index.php index.html index.htm
 
 
   #---- ge-energy.com start
-  #RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.local$
+  RewriteCond %{HTTP_HOST} ^www\.fingerpistols\.local$
   # Don't loop anything targeting the actual mask directory, to allow
   # for linked scripts, stylesheets etc in the static HTML
-  #RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
+  RewriteCond %{REQUEST_URI} !^/ge-energy/docs/HTML-files/GE-Energy/
   # pass-through the matching file from beneath /sites/default/files/ and stop processing
-  #RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html [PT,L]
+  RewriteRule ^(.*)$ /ge-energy/docs/HTML-files/GE-Energy/index.html [PT,L]
   #---- ge-energy.com end
 
+
+  #---- ge-energy.com start
+  RewriteCond %{HTTP_HOST} ^www\.ge-industry\.com$
+  # Don't loop anything targeting the actual mask directory, to allow
+  # for linked scripts, stylesheets etc in the static HTML
+  RewriteCond %{REQUEST_URI} !^/industrialpipeline/
+  # pass-through the matching file from beneath /sites/default/files/ and stop processing
+  RewriteRule ^(.*)$ /industrialpipeline/index.html [PT,L]
+  #---- ge-energy.com end
+
+
+  #---- ge-energy.com start
+  RewriteCond %{HTTP_HOST} ^www\.ge-industry\.local$
+  # Don't loop anything targeting the actual mask directory, to allow
+  # for linked scripts, stylesheets etc in the static HTML
+  RewriteCond %{REQUEST_URI} !^/industrialpipeline/
+  # pass-through the matching file from beneath /sites/default/files/ and stop processing
+  RewriteRule ^(.*)$ /industrialpipeline/index.html [PT,L]
+  #---- ge-energy.com end
   
   # Redirect all users to access the site WITH the 'www.' prefix
   #RewriteCond %{HTTP_HOST} !^www\. [NC]

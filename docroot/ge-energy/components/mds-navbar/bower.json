@@ -1,0 +1,26 @@
+{
+  "name": "mds-navbar",
+  "description": "Variant of the GE Bootstrap navbar specifically for use within MDS.",
+  "version": "0.6.1",
+  "main": [
+    "js/mds-navbar.js",
+    "less/mds-navbar.less",
+    "less/responsive.less"
+  ],
+  "ignore": [
+    "components",
+    "css",
+    "node_modules",
+    "test",
+    ".*",
+    "Gruntfile.js",
+    "js/require.config.js"
+  ],
+  "dependencies": {
+    "ge-bootstrap": "git+https://devcloud.sw.ge.com/source/scm/dxc/ge-bootstrap#~1.2",
+    "requirejs": "~2.1.6",
+    "jquery": "~1.10.0",
+    "responsive-emitter": "git+https://devcloud.sw.ge.com/source/scm/dxc/responsive-emitter#~0.8.0",
+    "respond": "https://github.com/GeneralElectric/Respond.git#~1.2.1"
+  }
+}

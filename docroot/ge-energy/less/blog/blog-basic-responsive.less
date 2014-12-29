@@ -1,0 +1,100 @@
+
+// New Templates Responsive - Extension of ede-responsive.less
+//  Responsive styles for Basic Blog (Parent)
+// --------------------------------------------------
+
+@import "../../components/brandkit/less/variables.less";
+@import "../../components/bootstrap/less/mixins.less";
+
+
+// Variables
+@green: #46ad00;
+@logowidth: 372px;
+
+
+// context: div.blog-template.blog-basic
+.blog-basic {
+
+  @media (min-width: 1200px) {
+
+    .masthead {
+      .logo-container {
+        width: 585px;
+      }
+
+      header {
+        .headline {
+          width: 68%;
+        }
+      }
+    }
+
+    .blog-post-summary {
+      .blog-post-summary-header {
+        h1 {
+          width: 80%;
+        }
+
+        .share-controls {
+          width: 20%;
+        }
+      }
+
+      .blog-post-summary-text {
+        padding: 0 20% 0 71px;
+      }
+    }
+
+  }
+
+
+  @media (min-width: 768px) and (max-width: 979px) {
+
+    .masthead {
+      .logo-container {
+        width: 362px;
+      }
+      
+      header {
+        .headline {
+          width: 48%;
+          margin-top: 8%;
+        }
+      }
+    }
+
+  }
+
+
+  @media (max-width: 767px) {
+
+    .masthead {
+      background-color: transparent;
+
+      .logo-container {
+        width: 100%;
+        height: 228px;
+        padding: 0;
+        background-color: @green;
+        position: relative;
+        left: 0;
+
+        .logo {
+          right: 30px;
+        }
+      }
+      
+      header {
+        min-height: initial;
+
+        .headline {
+          width: initial;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+  }
+
+} // .blog-template.blog-basic
+

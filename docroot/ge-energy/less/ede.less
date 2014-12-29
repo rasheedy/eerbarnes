@@ -1,0 +1,1122 @@
+
+// Employee Design Extension
+// --------------------------------------------------
+
+@import "brandkit/less/brandkit.less";
+@import "ge-bootstrap/less/ge-bootstrap.less";
+
+
+// Common Elements
+// ---------------------------------------------
+// Common HTML element styles that may not have
+// been styled in previously in MDS 1.0 release.
+
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+hr {
+  margin: 0px;
+}
+
+body, html {
+  height: 100%;
+}
+
+// inputs
+
+input[type="radio"],
+input[type="radio"]:focus {
+  outline: none;
+}
+
+.table-unstyled {
+  border: none;
+  margin-bottom: 0px;
+
+  tbody {
+    
+    tr {
+      
+      border: none;
+    }
+    td {
+      border: none;
+      padding: 0px;
+      padding-right: 10px; 
+      vertical-align: top;
+    }
+  }
+  width: auto;
+}
+
+.position-relative {
+  position: relative;
+}
+.timestamp {
+  color: @grayLight;
+}
+
+time {
+  white-space: nowrap;
+}
+
+
+.fill-container {
+  .banner-content {
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+}
+
+.banner-lockup {
+
+  .last-btn {
+    margin-right: 0px;
+  }
+
+  .inline-block {
+    display: inline-block;
+    vertical-align: bottom;
+    img {
+      vertical-align: bottom;
+      margin-top: 5px;
+    }
+  }
+
+  margin: 15px 0 !important;
+
+  &.span12 {
+    margin-bottom: 0px;
+  }
+
+  .span5 {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    .inline-block {
+      margin-left: 25px;
+    }
+  }
+
+  .span7 {
+    margin-top: 40px;
+    .pull-right:first-child {
+      margin-right: -20px;
+    }
+  }
+
+  h2 {
+    color: @white;
+  }
+  color: @white;
+  .availability {
+    .icon-availability {
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+      margin-bottom: -2px;
+      margin-right: 5px;
+      border: 1px solid @gray;
+      border-radius: 4em;
+      background-color: transparent;
+    }
+    &.available {
+      .icon-availability {
+        border-color: @green;
+        background-color: @green;
+      }
+    }
+  }
+}
+
+.reset-top-margin {
+  margin-top: 0px;
+}
+
+.reset-bottom-margin {
+  margin-bottom: 0px !important;
+}
+
+.icon-gray-light {
+  color: @grayLight;
+}
+
+.icon-left-lockup {
+  padding-left: 10px;
+}
+
+.block.gray-block {
+  background-color: #f9f9fb;
+  
+}
+
+.header-div-subsection {
+  margin-top: 20px;
+  margin-bottom: 17px;
+}
+
+.ede-settings-banner.nav {
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.ede-settings-dropdown {
+  display: none;
+}
+
+.locked-divider {
+  margin-bottom: 20px;
+}
+
+textarea.ede-textarea-float {
+  float: left;
+  margin-left: 30px;
+}
+
+.settings-margin-left {
+  margin-left: 30px;
+}
+
+.settings-banner {
+  background: black;
+  background-image: url(../docs/assets/images/ede-settings-banner.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.profile-banner {
+  background: black;
+  background-image: url(../docs/assets/images/ede-profile-banner.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hide {
+  dislplay: none;
+}
+
+.show {
+  display: block-inline;
+}
+
+.btn-white {
+  background-color: @white;
+}
+
+a.btn-link {
+  color: @blue;
+  &:hover, &:active {
+    color: @blueDark;
+  }
+}
+
+.block.locked-block {
+  background-color: #f6f6f8;
+}
+
+// -- Close button
+
+.btn.close:link,
+.btn.close:focus,
+.btn.close:active,
+.btn.close:visited,
+.btn.close:hover {
+  background-color: transparent;
+}
+
+// -- Edit Button
+
+.btn.ede-edit {
+  margin-right: 0px;
+}
+
+//-- Random fix
+
+.badge {
+  line-height: normal !important;
+}
+
+.badge-small {
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+  padding: 4px 7px 2px 7px;
+  font-size: 12px;
+}
+
+// remove outline for links
+
+a,
+a:hover,
+a:visited,
+a:active,
+a:link,
+a img,
+a:hover img,
+a:visited img,
+a:active img,
+a:link img {
+  outline : none;
+  text-decoration: none;
+}
+
+.view-all a {
+  white-space: nowrap;
+}
+
+
+// Boostrap Overrides
+// ---------------------------------------------
+// Overrides of Bootstrap or GE Bootstrap components.
+
+
+//-- Mapping Component does not calculate height properly
+.olMap {
+  height: 100%;
+}
+
+//-- Bootstrap dropdown in btn group fix: https://github.com/twbs/bootstrap/issues/7511
+
+.btn-group > .btn-group {
+  .dropdown-menu {
+    li {
+      text-align: left;
+    }
+  }
+  > .btn.dropdown-toggle {
+    margin-left: 0;
+    .border-radius(0);
+  }
+}
+.btn-group > .btn-group:last-child {
+  margin-left: 1px;
+  > .btn.dropdown-toggle {
+    margin-left: 0;
+    .border-top-right-radius(@baseBorderRadius);
+    .border-bottom-right-radius(@baseBorderRadius);
+    border-left: 1px;
+  }
+}
+.btn-group > .btn-group:first-child {
+  margin-right: 1px;
+  > .btn.dropdown-toggle {
+    margin-left: 0;
+    .border-top-left-radius(@baseBorderRadius);
+    .border-bottom-left-radius(@baseBorderRadius);
+    border-right:1px;
+  }
+}
+
+
+//-- Sticky footer
+// TODO: need to fix this in mds
+
+.sticky-footer {
+  > header, > footer, > section  {
+    display: block;
+    height: auto;
+  }
+}
+
+//-- Dropdown menu
+
+.dropdown-menu {
+  li {
+    a i {
+      margin-right: 5px;
+    }
+    &.location {
+      h6 {
+        margin-bottom: 0;
+        font-weight: normal;
+      }
+      a {
+        color: @grayLight;
+      }
+    }
+  }
+}
+
+//-- Message list
+
+.message-list > .message-item:not(:first-child) {
+  border-top-color: @grayLighter;
+}
+
+.message-list {
+  margin-top: 0px;
+  > li {
+    .message-title {
+      display: inline-block;
+      margin-bottom: 5px;
+      margin: 0;
+      color: @blue;
+    }
+    .message-subject {
+      margin-bottom: 0;
+      color: @blue;
+      font-size: @baseFontSize;
+    }
+    .actions {
+      margin-top: 10px;
+    }
+  }
+  .message-item {
+    &.read {
+      .message-title, .message-subject {
+        color: #5995d1; // TODO - need to reconcile
+      }
+      p {
+        color: @gray;
+      }
+    }
+    .human {
+      font-family: @serifFontFamily;
+      time {
+        font-family: @sansFontFamily;
+      }
+    }
+    &:hover, &:active {
+      cursor: pointer;
+      .message-title, .message-subject {
+        color: @blueDark;
+      }
+      p {
+        color: @textColor;
+      }
+    }
+  }
+}
+
+//
+
+ul {
+  li.view-all {
+    margin-bottom: 0;
+    padding-top: 4px;
+    border-top: 1px solid @grayLighter;
+    a.btn-link {
+      color: @blue;
+      &:hover, &:active {
+        color: @blueDark;
+      }
+    }
+  }
+}
+
+
+//-- Tags
+
+.tag {
+  &.tag-small {
+    font-size: 12px;
+    padding: 4px 10px 3px 10px;
+  }
+}
+
+//-- Page header
+
+.page-header {
+  .block {
+    background-color: @white;
+    padding: 20px;
+    h2 {
+      line-height: 36px;
+    }
+  }
+  [class*="span"], .row {
+    margin-bottom: 0px;
+  }
+  .alert {
+    text-align: left;
+  }
+}
+
+//-- Modules
+  
+.modules {
+  .module {
+
+    // start draggable overrides 
+
+    &.draggable {
+      .module-header {
+        &:hover {
+          cursor: default;
+        }
+        &:active {
+          background-color: @white;
+        }
+      }
+    }
+
+    &.scrollable {
+      .module-body {
+        overflow-y: scroll; 
+      }
+    }
+
+    // end draggable overrides 
+
+    height: 380px;
+    min-height: 380px;
+    padding: 0px;
+    margin-bottom: @gridGutterWidth1200;
+    border-radius: 0;
+    background-color: @white;
+    header.module-header {
+      .btn-small {
+        i {
+          margin-bottom: -4px;
+        }
+      }
+      .btn-group {
+        margin: 0;
+      }
+      padding-top: @gridGutterWidth1200;
+      padding-left: @gridGutterWidth1200;
+      padding-right: @gridGutterWidth1200;
+    }
+    .module-body {
+      height: 300px;
+    }
+    .module-footer {
+      padding-left: @gridGutterWidth1200;
+      padding-right: @gridGutterWidth1200;
+    }
+    &.with-footer {
+      .module-body {
+        height: 260px;
+      }
+    }
+    &.draggable .module-body > div:first-child, .module-body > ul {
+      padding: 0 15px 0 @gridGutterWidth1200;
+    }
+    // -- feature rule overrides
+    .block.feature {
+      min-height: 0;
+    }
+    // -- Specific module types
+    &.chromeless {
+
+    }
+    &.double {
+      height: 790px;
+      min-height: 790px;
+      .module-body {
+        height: 710px;
+      }
+    }
+    // -- Specific content types
+    .hero {
+      .text.bottom {
+        left: @gridGutterWidth1200;
+        margin-left: 0;
+      }
+    }
+    &.links {
+      .module-body {
+        ul {
+          margin-top: 0;
+        }
+      }
+    }
+    &.with-toolbar {
+      header {
+        .toolbar {
+          .clearfix;
+          margin-top: 20px;
+          .btn-group {
+            float: left;
+          }
+          form.form-search {
+            display: inline-block;
+            width: auto;
+            margin-top: 10px;
+            margin-bottom: 0;
+            float: left;
+            .input-small {
+              width: 90px;
+            }
+            .btn {
+              margin-bottom: 0px;
+            }
+          }
+        }
+      }
+      .module-body {
+        height: 200px;
+      }
+      &.double {
+        .module-body {
+          height: 610px;
+        }
+      }
+    }
+    // dropdown z-indez
+    .btn-group {
+      .dropdown-menu {
+        z-index: 3000012;
+      }
+    }
+  }
+}
+
+// MDS Overrides
+// ---------------------------------------------
+// Overrides of MDS components namespaced by ede
+// class on body tag. See reference screens for
+// examples.
+
+
+// EDE Components
+// ---------------------------------------------
+// Components that comprise the Employee Design
+// Experience.
+
+
+//-- Carousel Module
+
+.module.carousel {
+  .item {
+    background-size: contain;
+    height: 380px;
+    .text {
+      position: relative;
+      width: 50%;
+      padding-left: @gridGutterWidth1200;
+      padding-top: @gridGutterWidth1200;
+      h1 {
+        margin-top: 0;
+      }
+      h1, h3 {
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .module.draggable.carousel {
+    min-height: 400px;
+    height: auto;
+    padding: 0;
+    .item {
+      min-height: 400px;
+      height: auto;
+      .text {
+        padding-left: @gridGutterWidth;
+        padding-top: @gridGutterWidth;
+      }
+    }
+  }
+}
+
+//-- Documents Module
+
+ul.document-list {
+  margin-top: 0;
+  > li {
+    &:not(:first-child) {
+      border-top: 1px solid @grayLighter;
+    }
+    &:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+    &:not(.view-all) {
+      .clearfix;
+      position: relative;
+      padding-top: 10px;
+      padding-bottom: 5px;
+      line-height: 22px;
+      a {
+        display: block;
+        font-weight: bold;
+        i[class*='icon'] {
+          display: block;
+          float: left;
+          margin-right: 10px;
+          margin-top: 3px;
+          color: @textColor;
+        }
+      }
+      > div {
+        float: left;
+        h6 {
+          display: inline;
+          margin: 0 2px 0 0;
+          color: @textColor;
+        }
+      }
+    }
+  }
+}
+
+//-- Community Component
+
+.module.community {
+
+}
+
+ul.community-list {
+  margin: 0;
+  > li {
+    &:not(:first-child) {
+      border-top: 1px solid @grayLighter;
+    }
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 0 0 10px 0;
+    &.view-all {
+      margin-bottom: 0;
+      padding-top: 4px;
+      padding-bottom: 0;
+    }
+    > div {
+      .actions {
+        margin-top: 10px;
+        margin-left: 85px;
+        a {
+          display: inline-block;
+          color: @gray;
+          margin-right: 15px;
+          font-weight: normal;
+          i {
+            margin-right: 4px;
+          }
+          .icon-ico_comments_sm {
+            position: relative;
+            top: 2px;
+            font-size: 17px;
+          }
+          .icon-ico_thumbsup_sm {
+            position: relative;
+            top: -1px;
+          }
+        }
+      }
+      > a {
+        .clearfix;
+        display: block;
+        h6 {
+          display: inline;
+          color: @blue;
+          margin-bottom: 0;
+        }
+        p, span {
+          color: @textColor;
+        }
+        h6, p {
+          margin: 0;
+        }
+        time, .time {
+          color: @gray;
+        }
+        .media {
+          padding: 0;
+          margin-left: -5px;
+        }
+        &:hover {
+          h6 {
+            color: @blueDark;
+          }
+        }
+      }
+      .human {
+        font-family: @serifFontFamily;
+        time, .time {
+          font-family: @sansFontFamily;
+        }
+      }
+    }
+    .media {
+      margin-right: 20px;
+    }
+    .info {
+      width: 60%;
+    }
+    &.heading {
+      border-bottom: none;
+      padding: 0;
+      margin: 0;
+      h4 {
+        margin: 0;
+      }
+      strong {
+        color: @black;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+//-- Notifictions Component
+
+.module.notifications {
+  ul > li {
+    position: relative;
+    a {
+      display: inline-block;
+      margin-bottom: 0px;
+    }
+    h6 {
+      display: inline;
+    }
+    button.btn.close {
+      position: absolute;
+      background-color: transparent;
+      top: 5px;
+      right: -15px;
+    }
+    &:first-child {
+      button.btn.close {
+        top: -3px;
+      }
+    }
+    &:hover {
+      h6 {
+        color: @blueDark;
+      }
+      button.btn.close {
+        background-color: transparent;
+        display: block;
+      }
+    }
+  }
+}
+
+//-- Training Component
+
+.module.training {
+  .list {
+    margin-top: 0;
+    > li {
+      margin-bottom: 10px;
+      a {
+        font-weight: bold;
+      }
+    }
+  }
+} 
+
+//-- Add a widget Component
+
+.module.add-widget {
+  display: table;
+  background: @grayLighter;
+  .module-add-widget {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    a {
+      display: inline;
+      font-weight: bold;
+    }
+  }
+}
+
+//-- Multi-level navigation component
+
+
+.multi-level-nav {
+
+  &.fixed {
+    position: fixed;
+    padding: 20px;
+  }  
+
+  .selected-nav {
+    color: @blue;
+  }
+
+
+  a strong {
+    color: @grayDarker;
+    &:hover {
+      color:@blue;
+    }
+    &:active {
+      color:@blue;
+    }
+    .selected {
+      color: @blue;
+    }
+  }
+
+  .collapsible-list {
+
+    &.secondary strong {
+      font-weight: normal;
+    }
+
+    li {
+      list-style-type: none;
+    }  
+
+    ul {
+      margin-top: 0px;
+    }
+  }
+
+}
+
+.side-nav {
+  margin-left: 0px !important;
+}
+
+//-- Share Modal
+
+.modal {
+  &.share {
+    textarea {
+      resize: none;
+    }
+    .item-description {
+      .clearfix;
+      margin-bottom: 10px;
+      .media {
+        width: 100px;
+        float: left;
+        margin-right: 20px;
+      }
+      .info {
+        width: 300px;
+        float: left;
+        h6 {
+          margin-bottom: 0px;
+        }
+      }
+    }
+    form {
+      width: 97%;
+      margin-top: 20px;
+      input {
+        display: block;
+        width: 100%;
+      }
+      textarea {
+        display: block;
+        width: 100%;
+      }
+    }
+    .btn.close {
+      position: absolute;
+      top: 10px;
+      right: 0px;
+      .actions a {
+        line-height: 12px;
+      }
+    }
+  }
+}
+
+
+//-- Organization Chart
+
+.organization-chart {
+  background-color: @white;
+  h6 {
+    display: inline-block;
+    color: @blue;
+    margin: 0;
+  }
+  a {
+    p {
+      color: @textColor;
+    }
+  }
+  a:hover {
+    p {
+      color: darken(@textColor, 10%);
+    }
+  }
+  .resource-info {
+    .manager {
+      position: relative;
+      height: 233px;
+      border-top: 1px solid @grayLighter;
+      img {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+    .resource {
+      height: 233px;
+      background-color: @offWhite;
+      border: 1px solid @grayLighter;
+      .block {
+        background-color: transparent;
+        img {
+          display: block;
+          margin-top: 14px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .reports {
+      height: 233px;
+      border-top: 1px solid @grayLighter;
+      .badge {
+        position: relative;
+        top: -2px;
+      }
+      header {
+        h4 {
+          display: inline-block;
+          margin-right: 10px;
+        }
+      }
+      .reports-list {
+        display: block;
+        overflow: auto;
+        overflow-x: hidden;
+        height: 200px;
+        margin: 0;
+        > li {
+          position: relative;
+          margin-bottom: 10px;
+          p {
+            margin: 0;
+          }
+          &.view-all {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .detail {
+    border-top: 1px solid @grayLighter;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.popover {
+  width: 310px;
+  max-width: 310px;
+  background-color: @white;
+  .popover-content {
+    .btn.close {
+      position: absolute;
+      top: 4px;
+      right: 0px;
+    }
+    .contact {
+      display: block;
+      width: 330px;
+      padding: 10px 0 10px 0;
+      .wrapper {
+        display: table-cell;
+        padding: 0 0 20px 0;
+        img {
+          display: inline-block;
+          margin: 0 10px 0 0;
+          vertical-align: middle;
+        }
+        .info {
+          display: inline-block;
+          vertical-align: middle;
+          width: 200px;
+          h6 {
+            color: @blue;
+          }
+          h6.type-contractor {
+            display: inline;
+            color: @textColor;
+          }
+          h6.type-contractor + p {
+            display: inline;
+          }
+          h6, p {
+            margin: 0;
+          }
+          .availability {
+            .icon-availability {
+              display: inline-block;
+              height: 12px;
+              width: 12px;
+              margin-bottom: -2px;
+              margin-right: 5px;
+              border: 1px solid @gray;
+              border-radius: 4em;
+              background-color: transparent;
+            }
+            &.available {
+              .icon-availability {
+                border-color: @green;
+                background-color: @green;
+              }
+            }
+          }
+          .message-time {
+            color: @grayLight;
+          }
+        }
+      }
+      
+      &:hover, &:active {
+        cursor: pointer;
+        h6 {
+          color: @blueDark;
+        }
+      }
+    }
+  }
+}
+
+
+// EDE IE9 icon offset issue
+.et-ie9 i.icon-ico_chevron_down_lg {
+  position: relative;
+  top: -2px;
+}
+
+
+// EDE Touch Overrides
+// ---------------------------------------------
+// Touch specific css overrides that allow a
+// better experience on mobile and tablet
+// devices.
+
+
+html.touch {
+
+  //-- Dashboard
+  i.icon-ico_chevron_down_lg {
+    position: relative;
+    top: -2px;
+  }
+
+  //-- Banner spacing
+  .banner-lockup .span5 {
+    margin-left: 20px;
+  }
+
+  //-- Toolbar margin
+  .navbar .toolbar-container {
+    margin-right: 21px;
+  }
+
+
+  //-- BacktoTop
+  i.icon-ico_arrowup_lg {
+    display: block;
+    margin-top: -3px;
+  }
+
+  // Boostrap 2.3.2 bug resolution
+  // https://github.com/twbs/bootstrap/commit/c0eabdda9fd8e97f44117bd4bd77dd1344039024
+
+  .dropdown-backdrop {
+    display: none;
+    position: static;
+  }
+
+}

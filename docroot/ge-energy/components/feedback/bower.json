@@ -1,0 +1,27 @@
+{
+  "name": "feedback",
+  "version": "0.2.0",
+  "main": [
+    "js/feedback.js",
+    "less/feedback.less",
+    "less/responsive.less"
+  ],
+  "ignore": [
+    ".*",
+    "npm-debug.log",
+    "Gruntfile.js",
+    "package.json",
+    "components",
+    "css",
+    "node_modules",
+    "test",
+    "js/require.config.js"
+  ],
+  "dependencies": {
+    "ge-bootstrap": "git+https://devcloud.sw.ge.com/source/scm/dxc/ge-bootstrap#~1.2.1",
+    "requirejs": "~2.1.6",
+    "jquery": "~1.10.0",
+    "slider": "git://devcloud.sw.ge.com/source/scm/dxc/slider#master",
+    "blog-content": "git://devcloud.sw.ge.com/source/scm/dxc/blog-content#~0.7.0"
+  }
+}

@@ -1,0 +1,317 @@
+
+// Email Templates - Memo - Intermediate A
+// --------------------------------------------------
+@import "email-base.less";
+
+
+/* ========== CLIENT-SPECIFIC STYLES ========== */
+
+#outlook a { padding: 0; } /* Force Outlook to provide a "view in browser" message */
+.ReadMsgBody{width: 100%;} .ExternalClass { width: 100%; } /* Force Hotmail to display emails at full width */
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height:  100%; } /* Force Hotmail to display normal line spacing */
+body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; } /* Prevent WebKit and Windows mobile changing default text sizes */
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; } /* Remove spacing between tables in Outlook 2007 and up */
+img { -ms-interpolation-mode: bicubic; } /* Allow smoother rendering of resized image in Internet Explorer */
+
+/* ========== RESET STYLES ========== */
+
+body { margin: 0; padding: 0; }
+img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+table { border-collapse: collapse !important; }
+body, #bodyTable, #bodyCell { height: 100% !important; margin: 0; padding: 0; width: 100% !important; }
+ul, li { margin: 0; padding: 0; }
+ul { margin-bottom: 15px; }
+li { margin-left: 20px; }
+
+/* ========== TEMPLATE STYLES ========== */
+
+#bodyCell { padding: 20px; }
+#templateContainer { width: 600px; }
+
+/* ========== Page Styles ========== */
+
+body, #bodyTable {
+  background-color: @grayLightestEmail;
+}
+
+h1 {
+  display: block;
+  font-family: @brandFontFamilyEmail;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: normal;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+  margin-left: 0;
+
+  .subhead {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 45px;
+  }
+}
+
+h2 {
+  color: @grayDarkestEmail !important;
+  display: block;
+  font-family: @brandFontFamilyEmail;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 42px;
+  letter-spacing: normal;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 16px;
+  margin-left: 0;
+}
+
+#templateViewOnline {
+  background-color: @grayLightestEmail;
+}
+
+.viewOnlineContent {
+  color: @grayEmail;
+  font-family: @sansFontFamilyEmail;
+  font-size: 14px;
+  line-height: 125%;
+  text-align: left;
+  padding-top: 15px;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+
+  div {
+    float: left;
+  }
+
+  a,
+  a:link,
+  a:visited, /* Yahoo! Mail Override */
+  a .yshortcuts /* Yahoo! Mail Override */ {
+    color: #0059bc;
+    font-weight: normal;
+    text-decoration: none;
+  }
+}
+
+#templateHeader {
+  background-color: @blueEmail;
+}
+
+.headerContent {
+  color: @whiteEmail;
+  font-family: @brandFontFamilyEmail;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 100%;
+  padding-top: 24px;
+  padding-right: 40px;
+  padding-bottom: 0;
+  padding-left: 40px;
+  text-align: left;
+
+  &.logo {
+    width: 96px;
+    padding-right: 22px;
+  }
+
+  &.title {
+    padding-top: 37px;
+    padding-left: 0; 
+  }
+}
+
+#headerLogo {
+  display: block;
+}
+
+/* ========== Body Styles ========== */
+
+#templateBody {
+  background-color: @whiteEmail;
+  border-bottom: 1px solid @grayLightEmail;
+}
+
+#bodyImage {
+  width: 518px;
+  border: 1px solid @grayLightestEmail;
+}
+
+.bodyContent {
+  color: @grayDarkerEmail;
+  font-family: @serifFontFamilyEmail;
+  font-size: 16px;
+  line-height: 150%;
+  padding-top: 37px;
+  padding-right: 40px;
+  padding-bottom: 21px;
+  padding-left: 40px;
+
+  &.image {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &.bottom {
+    padding-top: 26px;
+    padding-bottom: 0;
+  }
+
+  &.link {
+    padding-top: 15px;
+    padding-bottom: 60px;
+  }
+
+  &.link img {
+    margin-bottom: -1px;
+    padding-left: 2px;
+  }
+
+  a,
+  a:link,
+  a:visited, /* Yahoo! Mail Override */
+  a .yshortcuts /* Yahoo! Mail Override */ {
+    color: #0059bc;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  a.more {
+    font-family: @sansFontFamilyEmail;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+
+/* ========== Footer Styles ========== */
+
+.footerContent {
+  color: @grayEmail;
+  font-family: @sansFontFamilyEmail;
+  font-size: 14px;
+  line-height: 150%;
+  padding-top: 20px;
+  text-align: left;
+
+  a,
+  a:link,
+  a:visited, /* Yahoo! Mail Override */
+  a .yshortcuts,
+  a span /* Yahoo! Mail Override */ {
+    color: @grayEmail;
+    font-weight: normal;
+    text-decoration: none;
+  }
+}
+
+.copyright {
+  padding-top: 0;
+}
+
+/* ========== THRESHOLD 1 OF 1 ========== */
+
+@media only screen and (max-width:  640px) {
+  
+  /* ========== CLIENT-SPECIFIC STYLES ========== */
+  
+  body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: none !important; } /* Prevent Webkit platforms from changing default text sizes */
+  body { width: 100% !important; min-width: 100% !important; } /* Prevent iOS Mail from adding padding to the body */
+
+  /* ========== RESET STYLES ========== */
+  
+  #bodyCell { padding: 10px !important; }
+
+  /* ========== TEMPLATE STYLES ========== */
+
+  #templateContainer {
+    max-width: 600px !important;
+    width: 100% !important;
+  }
+
+  /* ========== Page Styles ========== */
+
+  h1 {
+    font-size: 24px !important;
+
+    .subhead {
+      font-size: 16px !important;
+      line-height: 26px !important;
+    }
+  }
+
+  h2 {
+    font-size: 24px !important;
+    line-height: 100% !important;
+  }
+
+  /* ========== Header Styles ========== */
+
+  .headerContent {
+    line-height: 125% !important;
+    padding-top: 12px !important;
+    padding-left: 20px !important;
+
+    &.logo {
+      width: 48px !important;
+      padding-right: 11px !important;
+    }
+
+    &.title {
+      padding-top: 18px !important;
+      padding-right: 10px !important;
+      padding-left: 0 !important;
+    }
+  }
+
+  #headerLogo {
+    max-width: 48px !important;
+  }
+
+  .viewOnlineContent div {
+    float: none !important;
+  }
+
+  /* ========== Body Styles ========== */
+
+  #bodyImage {
+    height: auto !important;
+    width: 100% !important;
+    max-width: 558px !important;
+  }
+
+  .bodyContent {
+    line-height: 136% !important;
+    padding-top: 18px !important;
+    padding-right: 20px !important;
+    padding-bottom: 10px !important;
+    padding-left: 20px !important;
+
+    &.image {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    &.bottom {
+      padding-top: 13px !important;
+    }
+
+    &.link {
+      padding-top: 7px !important;
+      padding-bottom: 30px !important;
+    }
+  }
+
+  /* ========== Footer Styles ========== */
+
+  .footerContent {
+    line-height: 150% !important;
+  }
+
+  .copyright {
+    padding-top: 20px !important;
+  }
+}

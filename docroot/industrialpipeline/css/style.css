@@ -1,0 +1,411 @@
+/* -- FONTS --*/
+@font-face {
+  font-family: ge-inspira;
+  src: url("../fonts/GEInspRg.eot") format("eot");
+  src: url("../fonts/GEInspRg.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GEInspRg.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GEInspRg.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-inspira;
+  src: url("../fonts/GEInspIt.eot") format("eot");
+  src: url("../fonts/GEInspIt.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GEInspIt.woff") format("woff"), url("../components/brandkit/fonts/GEInspIt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;/* IE9 Compat Modes */
+}
+@font-face {
+  font-family: ge-inspira;
+  src: url("../fonts/GEInspMd.eot") format("eot");
+  src: url("../fonts/GEInspMd.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GEInspMd.woff") format("woff"), url("../components/brandkit/fonts/GEInspMd.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;/* IE9 Compat Modes */
+}
+@font-face {
+  font-family: ge-inspira;
+  src: url("../fonts/GEInspMdIt.eot") format("eot");
+  src: url("../fonts/GEInspMdIt.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GEInspMdIt.woff") format("woff"), url("../components/brandkit/fonts/GEInspMdIt.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;/* IE9 Compat Modes */
+}
+@font-face {
+  font-family: ge-sans;
+  src: url("../fonts/GESans-Regular.eot") format("eot");
+  src: url("../fonts/GESans-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESans-Regular.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-sans;
+  src: url("../fonts/GESans-Italic.eot") format("eot");
+  src: url("../fonts/GESans-Italic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESans-Italic.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESans-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-sans;
+  src: url("../fonts/GESans-Bold.eot") format("eot");
+  src: url("../fonts/GESans-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESans-Bold.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESans-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-sans;
+  src: url("../fonts/GESans-BoldItalic.eot") format("eot");
+  src: url("../fonts/GESans-BoldItalic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESans-BoldItalic.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESans-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-serif;
+  src: url("../fonts/GESerif-Regular.eot") format("eot");
+  src: url("../fonts/GESerif-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESerif-Regular.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESerif-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-serif;
+  src: url("../fonts/GESerif-Italic.eot") format("eot");
+  src: url("../fonts/GESerif-Italic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESerif-Italic.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESerif-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-serif;
+  src: url("../fonts/GESerif-Bold.eot") format("eot");
+  src: url("../fonts/GESerif-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESerif-Bold.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESerif-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-serif;
+  src: url("../fonts/GESerif-BoldItalic.eot") format("eot");
+  src: url("../fonts/GESerif-BoldItalic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+   url("../fonts/GESerif-BoldItalic.woff") format("woff"), /* Modern Browsers */
+   url("../fonts/GESerif-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;/* IE9 Compat Modes */
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: ge-iconography-webfont;
+  src: url('../fonts/ge-iconography-webfont.eot?') format('eot'), url('../components/brandkit/fonts/ge-iconography-webfont.woff') format('woff'), url('../components/brandkit/fonts/ge-iconography-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* -- Custom Styles --*/
+body {
+	background-color: #f4f4f5;
+	font-family: 'ge-inspira', arial, sans-serif;
+}
+.navbar-default{
+	border: none;
+	padding-bottom: 13px;
+}
+
+.top-section {
+	background-image: url('../img/top_image.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: #121407;
+	color: #fff;
+}
+
+body > header > nav > div > div.navbar-header > a:nth-child(3) > img {
+	padding-left: 15px;
+}
+
+h1 {
+	font-size: 3.5em;
+	text-transform: uppercase;
+}
+
+.top-section > div {
+	padding: 5em 0;
+}
+
+.top-section div > div > div > span {
+	text-transform: uppercase;
+	font-size: 1.35em;
+}
+
+.top-section div > div > div > p {
+	font-size: 1.35em;
+}
+
+.top-section > div > div > div > a > img {
+	padding-top: 2.5em;
+}
+
+.navbar-default .navbar-nav >li {
+	padding: 0;
+	padding-right: 1.5em;
+	padding-top: 25px;
+	margin-bottom: 0px;
+}
+
+.navbar-default .navbar-nav >li > a{
+	font-size: 14px;
+	font-weight: bold;
+	color: black;
+}
+
+.btn {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.section-two {
+	background: rgba(232,232,232,1);
+	background: -moz-linear-gradient(left, rgba(232,232,232,1) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(232,232,232,1)), color-stop(100%, rgba(255,255,255,1)));
+	background: -webkit-linear-gradient(left, rgba(232,232,232,1) 0%, rgba(255,255,255,1) 100%);
+	background: -o-linear-gradient(left, rgba(232,232,232,1) 0%, rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(left, rgba(232,232,232,1) 0%, rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right, rgba(232,232,232,1) 0%, rgba(255,255,255,1) 100%);
+
+}
+
+.section2_bkgd{
+	background-image: url('../img/sectiontwo.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+}
+
+.title-left {
+	background-color: #898989;
+	line-height: 30px;
+}
+
+.title-center {
+	background-color: #898989;
+	line-height: 30px;
+	text-align: center;
+}
+
+.title-center > span {
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+body > div.section-two > div:nth-child(1) > div > span {
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	padding-left: 13.5em;
+}
+
+body > div.section-two > div.container.section2_bkgd > div {
+	padding:5em 0;
+}
+
+h3 {
+	font-size: 40px;
+}
+
+p {
+	font-size: 14px;
+
+}
+
+body > div.section-two > div.container.section2_bkgd > div > div.col-md-7 > span, body > div.section-four > div.container > div > div > span {
+	color: #ec971f;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+button {
+	margin-right: 2em;
+}
+
+.section-three {
+	background-image: url('../img/sectionthree.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: #eb8131;
+	height: 100%;
+	color: #fff;
+}
+
+.title-right {
+	background-color: #898989;
+	line-height: 30px;
+	text-align: right;
+}
+
+body > div.section-three > div.container.section3_bkgd > div > div > h3{
+	font-size: 40px;
+}
+
+body > div.section-three > div.container.section3_bkgd > div > div > p{
+	font-size: 14px;
+}
+
+body > div.section-three > div.row > div > span {
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	padding-right: 10em;
+}
+
+body > div.section-three > div.container.section3_bkgd > div {
+	padding: 3.5em 0;
+}
+
+body > div.section-three > div.container.section3_bkgd > div > div > button:nth-child(3) {
+	
+}
+
+.section-four {
+	background-image: url('../img/sectionfour.jpg');
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+	background-color: #fff;
+	height: 100%;
+
+}
+
+body > div.section-four > div.row > div > span {
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	padding-left: 13.5em;
+}
+
+body > div.section-four > div.container > div > div {
+	padding-top:4em;
+}
+
+body > div.section-four > div.container  {
+	padding-bottom: 3em;
+}
+
+.section-benefits{
+	background-image: url('../img/benefits.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: #00588e;
+	height: 100%;
+
+}
+
+body > div.section-benefits > div > div {
+	padding-top:5em;
+}
+
+h4 {
+	font-size: 24px;
+	text-transform: uppercase;
+}
+
+#carousel-example-generic > div > div.item > div.col-md-5.col-sm-12 > p {
+	font-size: 18px;
+	line-height: 20px;
+}
+
+#carousel-example-generic > div {
+	color: white;
+}
+
+#carousel-example-generic > div > div.col-md-3.col-md-offset-2.col-sm-12 > img {
+	text-align: center;
+	padding-top: 3em;
+}
+
+#carousel-example-generic > div > div > div > div.col-md-3.col-md-offset-2.col-sm-12 {
+	text-align: center;
+}
+
+#carousel-example-generic > div > div > div > div > img {
+	padding: 2em;
+}
+
+#carousel-example-generic > div > div > div {
+	padding-bottom: 5em;
+}
+
+.btn {
+	margin-bottom: 1em;
+}
+
+.btn-warning {
+	background-color: #eb8131;
+	border-color: #eb8131;
+}
+
+.btn-default {
+	background-color: #fff;
+	border-color: #fff;
+}
+
+body > div:nth-child(7) > div {
+	padding: 3em;
+}
+
+footer {
+	padding-bottom:3em;
+}
+
+footer > div > div > ul {
+	list-style: none;
+}
+
+footer > div > div > ul > li  {
+	display: inline-block;
+		float: right;
+}
+
+footer > div > div > ul > li > a {
+	color: black;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+	padding-right: 1em;
+
+}
+
+.footer-nav {
+	padding-right: 3em;
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+

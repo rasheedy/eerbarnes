@@ -1,0 +1,112 @@
+// Dependencies
+// --------------------------------------------------
+
+@import "bootstrap/less/responsive-navbar.less";
+
+
+// Bootstrap Overrides
+// --------------------------------------------------
+
+@media (max-width: @navbarCollapseWidth) {
+
+  .nav-collapse .btn {
+    font-weight: bold;
+    padding: @paddingInputs;
+    border: none;
+  }
+
+  .primary-navbar.nav-collapse .nav {
+
+    > li {
+      border-top: 1px solid @grayLighter;
+      float: none;
+      &.open .dropdown-menu {
+        position: static;
+        float: none;
+        > .open {
+          float: none;
+        }
+      }
+      &.dropdown > a,
+      &.dropdown > a:hover,
+      &.dropdown.open > a {
+        border: 0;
+        margin: 0;
+        padding: 12px 20px;
+      }
+      > a {
+        padding: 12px 20px;
+      }
+    }
+  }
+
+  .nav-collapse .dropdown-menu {
+    display: none;
+    float: left;
+    left: 0;
+    margin: 0 0 0 5px;
+    min-width: 100px;
+    padding: 14px 45px;
+    position: absolute;
+    top: 100%;
+    a {
+      color: @textColor;
+      font-weight: bold;
+      margin-right: 30px;
+      margin-bottom: 0;
+
+      &:hover {
+        background: transparent;
+        color: @linkColor;
+      }
+    }
+  }
+
+  // moved from responsive.less
+
+  .toolbar-container {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  .btn-toolbar {
+    display: inline-block;
+  }
+
+  .navbar .btn.btn-navbar {
+    display: inline-block;
+    float: none;
+    margin-top: 0px;
+    margin-left: 6px;
+  }
+
+  .navbar .brand {
+    margin: 17px 0 0 -17px;
+  }
+
+  .navbar {
+    &.navbar-small {
+      .brand {
+        margin: 6px 0 0 0;
+      }
+      .primary-navbar {
+        margin-left: 0px;
+      }
+    }
+  }
+
+  .nav-collapse .navbar-form,
+  .nav-collapse .navbar-search {
+    float: none;
+    padding: 0;
+    margin: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .navbar .primary-navbar .dropdown-menu {
+    border: none;
+  }
+
+  
+}

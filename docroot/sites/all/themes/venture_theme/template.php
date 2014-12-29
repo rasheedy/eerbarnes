@@ -106,3 +106,9 @@ function venture_theme_page_alter($page) {
   );
   drupal_add_html_head($viewport, 'viewport');
 }
+
+
+function venture_theme_preprocess_html(&$variables) {
+  // google fonts
+  drupal_add_css('http://fonts.googleapis.com/css?family=Amatic+SC', array('type' => 'external'));
+}
