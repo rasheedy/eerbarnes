@@ -52,13 +52,6 @@ DirectoryIndex index.php index.html index.htm
   </FilesMatch>
 </IfModule>
 
-
-# Remove trailing slash with 301 perma redirect;  Works with both http and https
-<IfModule mod_alias.c>
-  RedirectMatch 301 ^(.+)/$ $1
-</IfModule>
-
-
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on
@@ -99,8 +92,6 @@ DirectoryIndex index.php index.html index.htm
   # RewriteCond %{HTTP_HOST} .
   # RewriteCond %{HTTP_HOST} !^www\. [NC]
   # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-  
   #
   # To redirect all users to access the site WITHOUT the 'www.' prefix,
   # (http://www.example.com/... will be redirected to http://example.com/...)
@@ -116,9 +107,8 @@ DirectoryIndex index.php index.html index.htm
   #
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
-  RewriteBase /
+  # RewriteBase /
 
-  #---- Drupal standard
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
   RewriteCond %{REQUEST_FILENAME} !-f
