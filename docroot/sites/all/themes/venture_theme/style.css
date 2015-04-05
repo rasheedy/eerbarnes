@@ -883,6 +883,12 @@ border-left: 1px solid; border-right: 1px solid; height: 40px; margin-left: -36p
   font-size: 16px;
 }
 
+
+/* custom rasheed */
+.footer-social a { margin-left: 50px; }
+.footer-social .instagram-icon { background-image: url('/sites/all/themes/venture_theme/images/social-icons/instagram-icon.png'); }
+
+
 /* Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  * License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 ================================================== */

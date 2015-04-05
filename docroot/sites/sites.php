@@ -5,6 +5,7 @@ $sites['bronxgarage.local'] = 'garage';
 $sites['fingerpistols.local'] = 'garage';
 $sites['www.bronxgarage.local'] = 'garage';
 $sites['www.bronxgarage.local'] = 'garage';
+$sites['bronxfactory.local'] = 'factory';
 
 $sites['bronxgarage.com'] = 'garage';
 $sites['www.bronxgarage.com'] = 'garage';
