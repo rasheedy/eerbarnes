@@ -245,7 +245,7 @@
  * @endcode
  */
 $config_directories = array();
-
+$config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/sync';
 /**
  * Settings:
  *
@@ -760,6 +760,8 @@ if (class_exists('Drupal') && defined('Drupal::CORE_COMPATIBILITY') && Drupal::C
     $settings['install_profile'] = 'lightning';
   }
 }
+
+
 
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
