@@ -4,7 +4,6 @@ namespace Drupal\diff\Plugin\diff\Layout;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Datetime\DateFormatter;
-use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
@@ -15,8 +14,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Provides Unified fields diff layout.
- *
  * @DiffLayoutBuilder(
  *   id = "unified_fields",
  *   label = @Translation("Unified fields"),
@@ -98,19 +95,16 @@ class UnifiedFieldsDiffLayout extends DiffLayoutBase {
   /**
    * {@inheritdoc}
    */
-  public function build(ContentEntityInterface $left_revision, ContentEntityInterface $right_revision, ContentEntityInterface $entity) {
-    // Build the revisions data.
-    $build = $this->buildRevisionsData($left_revision, $right_revision);
-
+  public function build(EntityInterface $left_revision, EntityInterface $right_revision, EntityInterface $entity) {
     $active_filter = $this->requestStack->getCurrentRequest()->query->get('filter') ?: 'raw';
-    $raw_active = $active_filter == 'raw';
-
-    $build['controls']['filter'] = [
+    $build['filter'] = [
       '#type' => 'item',
       '#title' => $this->t('Filter'),
-      '#wrapper_attributes' => ['class' => 'diff-controls__item'],
-      'options' => $this->buildFilterNavigation($entity, $left_revision, $right_revision, 'unified_fields', $active_filter),
+      '#weight' => 3,
+      '#prefix' => '<div class="diff-layout">',
+      '#suffix' => '</div>',
     ];
+    $build['filter']['options'] = $this->buildFilterNavigation($entity, $left_revision, $right_revision, 'unified_fields', $active_filter);
 
     // Build the diff comparison table.
     $diff_header = $this->buildTableHeader($right_revision);
@@ -129,6 +123,7 @@ class UnifiedFieldsDiffLayout extends DiffLayoutBase {
         ];
       }
 
+      $raw_active = $active_filter == 'raw';
       if (!$raw_active) {
         $field_settings = $field['#settings'];
         if (!empty($field_settings['settings']['markdown'])) {
@@ -157,7 +152,7 @@ class UnifiedFieldsDiffLayout extends DiffLayoutBase {
       $row_count_right = NULL;
       foreach ($field_diff_rows as $key => $value) {
         $show = FALSE;
-        if (isset($field_diff_rows[$key][1]['data'])) {
+        if (isset($field_diff_rows[$key][1]['data']) && trim($field_diff_rows[$key][1]['data']['#markup']) != '') {
           if ($field_diff_rows[$key][1] == $field_diff_rows[$key][3]) {
             $show = TRUE;
             $row_count_right++;
@@ -174,17 +169,17 @@ class UnifiedFieldsDiffLayout extends DiffLayoutBase {
             ],
             'row-sign' => [
               'data' => isset($field_diff_rows[$key][0]['data']) ? $field_diff_rows[$key][0]['data'] : NULL,
-              'class' => [isset($field_diff_rows[$key][0]['class']) ? $field_diff_rows[$key][0]['class'] : NULL, $field_diff_rows[$key][1]['class']],
+              'class' => [isset($field_diff_rows[$key][0]['class']) ? $field_diff_rows[$key][0]['class'] : NULL, $field_diff_rows[$key][1]['class']]
             ],
             'row-data' => [
               'data' => $field_diff_rows[$key][1]['data'],
               'colspan' => 2,
               'class' => $field_diff_rows[$key][1]['class'],
-            ],
+            ]
           ];
         }
         if ($field_diff_rows[$key][1] != $field_diff_rows[$key][3]) {
-          if (isset($field_diff_rows[$key][3]['data'])) {
+          if (isset($field_diff_rows[$key][3]['data']) && trim($field_diff_rows[$key][3]['data']['#markup']) != '') {
             $row_count_right++;
             $final_diff[] = [
               'left-line-number' => [
@@ -197,19 +192,19 @@ class UnifiedFieldsDiffLayout extends DiffLayoutBase {
               ],
               'row-sign' => [
                 'data' => isset($field_diff_rows[$key][2]['data']) ? $field_diff_rows[$key][2]['data'] : NULL,
-                'class' => [isset($field_diff_rows[$key][2]['class']) ? $field_diff_rows[$key][2]['class'] : NULL, $field_diff_rows[$key][3]['class']],
+                'class' => [isset($field_diff_rows[$key][2]['class']) ? $field_diff_rows[$key][2]['class'] : NULL, $field_diff_rows[$key][3]['class']]
               ],
               'row-data' => [
                 'data' => $field_diff_rows[$key][3]['data'],
                 'colspan' => 2,
                 'class' => $field_diff_rows[$key][3]['class'],
-              ],
+              ]
             ];
           }
         }
       }
 
-      // Add field label to the table only if there are changes to that field.
+      // Add the field label to the table only if there are changes to that field.
       if (!empty($final_diff) && !empty($field_label_row)) {
         $diff_rows[] = [$field_label_row];
       }

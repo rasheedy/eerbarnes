@@ -2,17 +2,18 @@
 
 namespace Drupal\diff;
 
+use Drupal\Component\Plugin\PluginBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 
-/**
- * Base class for field diff builder plugins.
- */
 abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuilderInterface, ContainerFactoryPluginInterface {
+
+  use StringTranslationTrait;
 
   /**
    * Contains the configuration object factory.
@@ -44,12 +45,15 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config
+   *   The configuration factory object.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\diff\DiffEntityParser $entity_parser
    *   The entity parser.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, DiffEntityParser $entity_parser) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $config, EntityTypeManagerInterface $entity_type_manager, DiffEntityParser $entity_parser) {
+    $this->configFactory = $config;
     $this->entityTypeManager = $entity_type_manager;
     $this->entityParser = $entity_parser;
     parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -65,6 +69,7 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
       $configuration,
       $plugin_id,
       $plugin_definition,
+      $container->get('config.factory'),
       $container->get('entity_type.manager'),
       $container->get('diff.entity_parser')
     );
@@ -108,6 +113,9 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     $this->configuration['show_header'] = $form_state->getValue('show_header');
     $this->configuration['markdown'] = $form_state->getValue('markdown');
+    $this->configuration['#fields'] = $form_state->get('fields');
+    $this->setConfiguration($this->configuration);
+    $this->getConfiguration()->save();
   }
 
   /**
@@ -124,14 +132,27 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
    * {@inheritdoc}
    */
   public function getConfiguration() {
-    return $this->configuration;
+    return $this->configFactory->getEditable('diff.plugins');
   }
 
   /**
    * {@inheritdoc}
    */
   public function setConfiguration(array $configuration) {
-    $this->configuration = $configuration + $this->defaultConfiguration();
+    $config = $this->configFactory->getEditable('diff.plugins');
+    $field = $configuration['#fields'];
+    unset($configuration['#fields']);
+
+    $field_settings = [];
+    foreach ($configuration as $key => $value) {
+      $field_settings[$key] = $value;
+    }
+    $settings = array(
+      'type' => $this->pluginId,
+      'settings' => $field_settings,
+    );
+    $config->set('fields.' . $field, $settings);
+    $config->save();
   }
 
   /**
@@ -147,5 +168,4 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
   public static function isApplicable(FieldStorageDefinitionInterface $field_definition) {
     return TRUE;
   }
-
 }

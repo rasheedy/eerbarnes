@@ -4,12 +4,16 @@ namespace Drupal\Tests\diff\Unit;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
+use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Routing\AdminContext;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\diff\VisualDiffThemeNegotiator;
 use Drupal\Tests\UnitTestCase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Tests theme negotiator.
+ * Class VisualDiffThemeNegotiatorTest
  *
  * @coversDefaultClass \Drupal\diff\VisualDiffThemeNegotiator
  * @group diff
@@ -17,118 +21,75 @@ use Drupal\Tests\UnitTestCase;
 class VisualDiffThemeNegotiatorTest extends UnitTestCase {
 
   /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $user;
+
+  /**
    * The config factory.
    *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface|\Prophecy\Prophecy\ProphecyInterface
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
 
   /**
-   * The class under test.
+   * The entity manager.
    *
-   * @var \Drupal\diff\VisualDiffThemeNegotiator
+   * @var \Drupal\Core\Entity\EntityManagerInterface
    */
-  protected $themeNegotiator;
+  protected $entityManager;
+
+  /**
+   * The route admin context to determine whether a route is an admin one.
+   *
+   * @var \Drupal\Core\Routing\AdminContext
+   */
+  protected $adminContext;
 
   /**
    * {@inheritdoc}
    */
   protected function setUp() {
     parent::setUp();
-
+    $this->user = $this->prophesize(AccountInterface::class);
     $this->configFactory = $this->prophesize(ConfigFactoryInterface::class);
-    $this->themeNegotiator = new VisualDiffThemeNegotiator($this->configFactory->reveal());
+    $this->entityManager = $this->prophesize(EntityManagerInterface::class);
+    $this->adminContext = $this->prophesize(AdminContext::class);
   }
 
   /**
-   * @covers ::determineActiveTheme
+   * Tests if applies method returns true.
+   *
+   * Check the value returned by the applies method when the theme used for
+   * visual inline plugin is "Standard".
    */
-  public function testDetermineActiveTheme() {
-    $config = $this->prophesize(ImmutableConfig::class);
-    $config->get('default')->willReturn('the_default_theme');
-    $this->configFactory->get('system.theme')->willReturn($config->reveal());
+  public function testNegotiator() {
+    // Create $theme using mocked class.
+    $theme = new VisualDiffThemeNegotiator($this->user->reveal(),
+      $this->configFactory->reveal(),
+      $this->entityManager->reveal(),
+      $this->adminContext->reveal());
 
+    // Mocking $route_match and relevant variable.
     $route_match = $this->prophesize(RouteMatchInterface::class);
-    $result = $this->themeNegotiator->determineActiveTheme($route_match->reveal());
-    $this->assertSame('the_default_theme', $result);
-  }
+    $route_match->getRouteName()->willReturn('diff.revisions_diff');
+    $this->assertTrue($theme->isDiffRoute($route_match->reveal()));
+    $route_match->getRouteName()->willReturn('entity.entity_type_id.revisions_diff');
+    $this->assertTrue($theme->isDiffRoute($route_match->reveal()));
+    $route_match->getParameter('filter')->willReturn('visual_inline');
 
-  /**
-   * Tests if the theme negotiator applies under correct conditions.
-   *
-   * @param string $filter_parameter
-   *   The filter parameter.
-   * @param string $route_name
-   *   The route name.
-   * @param string $config_value
-   *   The configuration value of the element taken from the form values.
-   * @param bool $expected
-   *   The expected result.
-   *
-   * @covers ::applies
-   * @covers ::isDiffRoute
-   *
-   * @dataProvider providerTestApplies
-   */
-  public function testApplies($filter_parameter, $route_name, $config_value, $expected) {
-    $route_match = $this->prophesize(RouteMatchInterface::class);
-    $route_match->getParameter('filter')->willReturn($filter_parameter);
+    $container = $this->prophesize(ContainerInterface::class);
+    $container->get('config.factory')->willReturn($this->configFactory);
+    $diff_config = $this->prophesize(ImmutableConfig::class);
+    $this->configFactory->get('diff.settings')
+      ->willReturn($diff_config->reveal());
+    $diff_config->get('general_settings.visual_inline_theme')->willReturn('default');
+    \Drupal::setContainer($container->reveal());
 
-    if ($route_name) {
-      $route_match->getRouteName()->willReturn($route_name);
-    }
-    else {
-      $route_match->getRouteName()->shouldNotBeCalled();
-    }
-
-    if ($config_value) {
-      $diff_config = $this->prophesize(ImmutableConfig::class);
-      $diff_config->get('general_settings.visual_inline_theme')->willReturn($config_value);
-      $this->configFactory->get('diff.settings')->willReturn($diff_config->reveal());
-    }
-    else {
-      $this->configFactory->get('diff.settings')->shouldNotBeCalled();
-    }
-
-    $this->assertSame($expected, $this->themeNegotiator->applies($route_match->reveal()));
-  }
-
-  /**
-   * Provides test data to ::testApplies().
-   */
-  public function providerTestApplies() {
-    $data = [];
-    $data[] = [
-      'unexpected_filter_parameter',
-      NULL,
-      NULL,
-      FALSE,
-    ];
-    $data[] = [
-      'visual_inline',
-      'unexpected_route_name',
-      NULL,
-      FALSE,
-    ];
-    $data[] = [
-      'visual_inline',
-      'diff.revisions_diff',
-      'unexpected_config_value',
-      FALSE,
-    ];
-    $data[] = [
-      'visual_inline',
-      'diff.revisions_diff',
-      'default',
-      TRUE,
-    ];
-    $data[] = [
-      'visual_inline',
-      'entity.foo.revisions_diff',
-      'default',
-      TRUE,
-    ];
-    return $data;
+    // Check if applies function returns true.
+    $this->assertTrue($theme->applies($route_match->reveal()));
   }
 
 }

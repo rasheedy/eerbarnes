@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @file
- * This is the diff module to compare revisions.
+ * @file Contains hooks.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_help().

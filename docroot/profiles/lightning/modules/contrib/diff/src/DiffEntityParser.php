@@ -6,9 +6,6 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Language\LanguageInterface;
 
-/**
- * Transforms an entity into an array of strings for diff.
- */
 class DiffEntityParser {
 
   /**
@@ -19,16 +16,12 @@ class DiffEntityParser {
   protected $diffBuilderManager;
 
   /**
-   * Wrapper object for simple configuration from diff.settings.yml.
-   *
-   * @var \Drupal\Core\Config\ImmutableConfig
+   * Wrapper object for writing/reading simple configuration from diff.settings.yml
    */
   protected $config;
 
   /**
-   * Wrapper object for simple configuration from diff.plugins.yml.
-   *
-   * @var \Drupal\Core\Config\ImmutableConfig
+   * Wrapper object for writing/reading simple configuration from diff.plugins.yml
    */
   protected $pluginsConfig;
 
@@ -42,7 +35,7 @@ class DiffEntityParser {
    */
   public function __construct(DiffBuilderManager $diff_builder_manager, ConfigFactoryInterface $config_factory) {
     $this->config = $config_factory->get('diff.settings');
-    $this->pluginsConfig = $config_factory->get('diff.plugins');
+    $this->pluginsConfig =  $config_factory->get('diff.plugins');
     $this->diffBuilderManager = $diff_builder_manager;
   }
 
@@ -53,7 +46,7 @@ class DiffEntityParser {
    * to be compared. Basically this function transforms an entity into an array
    * of strings.
    *
-   * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+   * @param ContentEntityInterface $entity
    *   An entity containing fields.
    *
    * @return array
@@ -70,7 +63,6 @@ class DiffEntityParser {
     $entity_type_id = $entity->getEntityTypeId();
     // Loop through entity fields and transform every FieldItemList object
     // into an array of strings according to field type specific settings.
-    /** @var \Drupal\Core\Field\FieldItemListInterface $field_items */
     foreach ($entity as $field_items) {
       // Define if the current field should be displayed as a diff change.
       $show_diff = $this->diffBuilderManager->showDiff($field_items->getFieldDefinition()->getFieldStorageDefinition());
@@ -78,13 +70,13 @@ class DiffEntityParser {
         continue;
       }
       // Create a plugin instance for the field definition.
-      $plugin = $this->diffBuilderManager->createInstanceForFieldDefinition($field_items->getFieldDefinition());
+      $plugin = $this->diffBuilderManager->createInstanceForFieldDefinition($field_items->getFieldDefinition(), $entity->bundle());
       if ($plugin) {
         // Create the array with the fields of the entity. Recursive if the
         // field contains entities.
         if ($plugin instanceof FieldReferenceInterface) {
           foreach ($plugin->getEntitiesToDiff($field_items) as $entity_key => $reference_entity) {
-            foreach ($this->parseEntity($reference_entity) as $key => $build) {
+            foreach($this->parseEntity($reference_entity) as $key => $build) {
               $result[$key] = $build;
               $result[$key]['label'] = $field_items->getFieldDefinition()->getLabel() . ' > ' . $result[$key]['label'];
             };
@@ -103,5 +95,4 @@ class DiffEntityParser {
     $this->diffBuilderManager->clearCachedDefinitions();
     return $result;
   }
-
 }

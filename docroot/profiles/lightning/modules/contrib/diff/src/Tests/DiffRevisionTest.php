@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @ingroup diff
+ */
+
 namespace Drupal\diff\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;
@@ -22,29 +26,19 @@ class DiffRevisionTest extends DiffTestBase {
   public static $modules = [
     'diff_test',
     'content_translation',
-    'field_ui',
+    'field_ui'
   ];
-
-  /**
-   * Run all test fragments.
-   */
-  public function testAll() {
-    $this->doTestRevisionDiffOverview();
-    $this->doTestOverviewPager();
-    $this->doTestRevisionOverviewErrorMessages();
-    $this->doTestEntityReference();
-  }
 
   /**
    * Tests the revision diff overview.
    */
-  protected function doTestRevisionDiffOverview() {
+  public function testRevisionDiffOverview() {
     $this->drupalPlaceBlock('system_breadcrumb_block');
     // Login as admin with the required permission.
     $this->loginAsAdmin(['delete any article content']);
 
     // Create an article.
-    $title = 'test_title_a';
+    $title = 'test_title';
     $edit = array(
       'title[0][value]' => $title,
       'body[0][value]' => '<p>Revision 1</p>
@@ -59,15 +53,15 @@ class DiffRevisionTest extends DiffTestBase {
     // Make sure the revision tab doesn't exist.
     $this->assertNoLink('Revisions');
 
-    // Create a second revision, with a revision comment.
-    $this->drupalGet('node/add/article');
+    // Create a second revision, with a comment.
     $edit = array(
       'body[0][value]' => '<p>Revision 2</p>
       <p>first_unique_text</p>
       <p>second_unique_text</p>',
       'revision' => TRUE,
-      'revision_log[0][value]' => 'Revision 2 comment',
+      'revision_log[0][value]' => 'Revision 2 comment'
     );
+    $this->drupalGet('node/add/article');
     $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save and keep published'));
     $this->drupalGet('node/' . $node->id());
 
@@ -81,14 +75,16 @@ class DiffRevisionTest extends DiffTestBase {
     $this->assertText('Initial revision.');
 
     // Compare the revisions in standard mode.
-    $this->drupalPostForm(NULL, NULL, t('Compare selected revisions'));
+    $this->drupalPostForm(NULL, NULL, t('Compare'));
     $this->clickLink('Split fields');
     // Assert breadcrumbs are properly displayed.
     $this->assertRaw('<nav class="breadcrumb"');
+    $nid1 = $node->id();
     $trail = [
       '' => 'Home',
-      "node/" . $node->id() => $node->label(),
-      "node/" . $node->id() . "/revisions" => 'Revisions',
+      "node" => 'Node',
+      "node/$nid1" => $node->label(),
+      "node/$nid1/revisions" => 'Revisions',
     ];
     $this->assertBreadcrumb(NULL, $trail);
     // Extract the changes.
@@ -96,8 +92,9 @@ class DiffRevisionTest extends DiffTestBase {
     $rows = $this->xpath('//tbody/tr');
     $head = $this->xpath('//thead/tr');
     $diff_row = $rows[1]->td;
+    $comment = $head[0]->th[1];
     // Assert the revision comment.
-    $this->assertRaw('diff-revision__item-message">Revision 2 comment');
+    $this->assertEqual((string) $comment, 'Revision 2 comment');
     // Assert changes made to the body, text 1 changed to 2.
     $this->assertEqual((string) ($diff_row[0]), '1');
     $this->assertEqual((string) ($diff_row[1]), '-');
@@ -113,10 +110,12 @@ class DiffRevisionTest extends DiffTestBase {
     $rows = $this->xpath('//tbody/tr');
     // Assert breadcrumbs are properly displayed.
     $this->assertRaw('<nav class="breadcrumb"');
+    $nid1 = $node->id();
     $trail = [
       '' => 'Home',
-      "node/" . $node->id() => $node->label(),
-      "node/" . $node->id() . "/revisions" => 'Revisions',
+      "node" => 'Node',
+      "node/$nid1" => $node->label(),
+      "node/$nid1/revisions" => 'Revisions',
     ];
     $this->assertBreadcrumb(NULL, $trail);
     // Extract the changes.
@@ -133,10 +132,12 @@ class DiffRevisionTest extends DiffTestBase {
     $this->clickLink('Unified fields');
     // Assert breadcrumbs are properly displayed.
     $this->assertRaw('<nav class="breadcrumb"');
+    $nid1 = $node->id();
     $trail = [
       '' => 'Home',
-      "node/" . $node->id() => $node->label(),
-      "node/" . $node->id() . "/revisions" => 'Revisions',
+      "node" => 'Node',
+      "node/$nid1" => $node->label(),
+      "node/$nid1/revisions" => 'Revisions',
     ];
     $this->assertBreadcrumb(NULL, $trail);
     // Extract the changes.
@@ -235,13 +236,13 @@ class DiffRevisionTest extends DiffTestBase {
       'radios_left' => 3,
       'radios_right' => 4,
     ];
-    $this->drupalPostForm(NULL, $edit, t('Compare selected revisions'));
+    $this->drupalPostForm(NULL, $edit, t('Compare'));
     $this->clickLink('Strip tags');
     // Check markdown layout is used when navigating between revisions.
     $rows = $this->xpath('//tbody/tr');
     $diff_row = $rows[3]->td;
     $this->assertEqual(htmlspecialchars_decode(strip_tags($diff_row[3]->asXML())), 'new body');
-    $this->clickLink('Next change');
+    $this->clickLink('Next change >');
     // The filter should be the same as the previous screen.
     $rows = $this->xpath('//tbody/tr');
     $diff_row = $rows[3]->td;
@@ -269,21 +270,17 @@ class DiffRevisionTest extends DiffTestBase {
     $this->assertNoLink(t('Set as current revision'));
   }
 
-  /**
-   * Tests pager on diff overview.
-   */
-  protected function doTestOverviewPager() {
+  public function testOverviewPager() {
     $config = \Drupal::configFactory()->getEditable('diff.settings');
     $config->set('general_settings.revision_pager_limit', 10)->save();
-
-    $this->loginAsAdmin(['view article revisions']);
-
+    $admin_user = $this->drupalCreateUser(['view article revisions']);
+    $this->drupalLogin($admin_user);
     $node = $this->drupalCreateNode([
       'type' => 'article',
     ]);
-    // Create 11 more revisions in order to trigger paging on the revisions
+    // Create 50 more revisions in order to trigger paging on the revisions
     // overview screen.
-    for ($i = 0; $i < 11; $i++) {
+    for ($i = 0; $i < 15; $i++) {
       $node->setNewRevision(TRUE);
       $node->save();
     }
@@ -298,17 +295,15 @@ class DiffRevisionTest extends DiffTestBase {
     $this->clickLinkPartialName('Next page');
     // Check the number of elements on the second page.
     $element = $this->xpath('//*[@id="edit-node-revisions-table"]/tbody/tr');
-    $this->assertEqual(count($element), 2);
+    $this->assertEqual(count($element), 6);
     $this->assertRaw('page=0');
     $this->clickLinkPartialName('Previous page');
   }
 
   /**
    * Tests the revisions overview error messages.
-   *
-   * @todo Move to DiffLocaleTest?
    */
-  protected function doTestRevisionOverviewErrorMessages() {
+  public function testRevisionOverviewErrorMessages() {
     // Enable some languages for this test.
     $language = ConfigurableLanguage::createFromLangcode('de');
     $language->save();
@@ -331,14 +326,13 @@ class DiffRevisionTest extends DiffTestBase {
     $this->drupalPostForm('admin/config/regional/content-language', $edit, t('Save configuration'));
 
     // Create an article.
-    $title = 'test_title_b';
+    $title = 'test_title';
     $edit = [
       'title[0][value]' => $title,
       'body[0][value]' => '<p>Revision 1</p>',
     ];
     $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
     $node = $this->drupalGetNodeByTitle($title);
-    $revision1 = $node->getRevisionId();
 
     // Create a revision, changing the node language to German.
     $edit = [
@@ -354,7 +348,7 @@ class DiffRevisionTest extends DiffTestBase {
     $this->assertEqual(count($rows), 1);
 
     // Compare the revisions and assert the first error message.
-    $this->drupalPostForm(NULL, NULL, t('Compare selected revisions'));
+    $this->drupalPostForm(NULL, NULL, t('Compare'));
     $this->assertText('Multiple revisions are needed for comparison.');
 
     // Create another revision, changing the node language back to English.
@@ -364,8 +358,6 @@ class DiffRevisionTest extends DiffTestBase {
       'revision' => TRUE,
     ];
     $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save and keep published'));
-    $node = $this->drupalGetNodeByTitle($title, TRUE);
-    $revision3 = $node->getRevisionId();
 
     // Check the revisions overview, ensure two revisions are available.
     $this->clickLink(t('Revisions'));
@@ -377,78 +369,25 @@ class DiffRevisionTest extends DiffTestBase {
     $this->assertNoFieldChecked('edit-node-revisions-table-1-select-column-two');
 
     // Compare the revisions and assert the second error message.
-    $this->drupalPostForm(NULL, NULL, t('Compare selected revisions'));
+    $this->drupalPostForm(NULL, NULL, t('Compare'));
     $this->assertText('Select two revisions to compare.');
 
     // Check the same revisions twice and compare.
     $edit = [
-      'radios_left' => $revision3,
-      'radios_right' => $revision3,
+      'radios_left' => 3,
+      'radios_right' => 3,
     ];
-    $this->drupalPostForm('/node/' . $node->id() . '/revisions', $edit, 'Compare selected revisions');
+    $this->drupalPostForm('/node/' . $node->id() . '/revisions', $edit, 'Compare');
     // Assert the third error message.
     $this->assertText('Select different revisions to compare.');
 
     // Check different revisions and compare. This time should work correctly.
     $edit = [
-      'radios_left' => $revision3,
-      'radios_right' => $revision1,
+      'radios_left' => 3,
+      'radios_right' => 1,
     ];
-    $this->drupalPostForm('/node/' . $node->id() . '/revisions', $edit, 'Compare selected revisions');
-    $this->assertLinkByHref('node/' . $node->id() . '/revisions/view/' . $revision1 . '/' . $revision3);
-  }
-
-  /**
-   * Tests Reference to Deleted Entities.
-   */
-  protected function doTestEntityReference() {
-    // Login as admin with the required permissions.
-    $this->loginAsAdmin([
-      'administer node fields',
-    ]);
-
-    // Adding Entity Reference to Article Content Type.
-    $this->drupalPostForm('admin/structure/types/manage/article/fields/add-field', [
-      'new_storage_type' => 'field_ui:entity_reference:node',
-      'label' => 'Content reference test',
-      'field_name' => 'content',
-    ], t('Save and continue'));
-
-    // Create an first article.
-    $title = 'test_title_c';
-    $edit = [
-      'title[0][value]' => $title,
-      'body[0][value]' => '<p>First article</p>',
-    ];
-    $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
-    $node_one = $this->drupalGetNodeByTitle($title);
-
-    // Create second article.
-    $title = 'test_title_d';
-    $edit = [
-      'title[0][value]' => $title,
-      'body[0][value]' => '<p>Second article</p>',
-    ];
-    $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
-    $node_two = $this->drupalGetNodeByTitle($title);
-
-    // Create revision and add entity reference from second node to first.
-    $edit = [
-      'body[0][value]' => '<p>First Revision</p>',
-      'field_content[0][target_id]' => $node_two->getTitle(),
-      'revision' => TRUE,
-    ];
-    $this->drupalPostForm('node/' . $node_one->id() . '/edit', $edit, t('Save and keep published'));
-
-    // Delete referenced node.
-    $node_two->delete();
-
-    // Access revision of first node.
-    $this->drupalGet('/node/' . $node_one->id());
-    $this->clickLink(t('Revisions'));
-    $this->drupalPostForm(NULL, NULL, t('Compare selected revisions'));
-    // Revision section should appear.
-    $this->assertResponse(200);
+    $this->drupalPostForm('/node/' . $node->id() . '/revisions', $edit, 'Compare');
+    $this->assertLinkByHref('node/1/revisions/view/1/3');
   }
 
 }

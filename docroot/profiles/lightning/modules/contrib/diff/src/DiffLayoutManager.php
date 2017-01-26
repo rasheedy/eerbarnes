@@ -23,16 +23,12 @@ class DiffLayoutManager extends DefaultPluginManager {
   protected $entityTypeManager;
 
   /**
-   * Wrapper object for simple configuration from diff.settings.yml.
-   *
-   * @var \Drupal\Core\Config\ImmutableConfig
+   * Wrapper object for writing/reading simple configuration from diff.settings.yml
    */
   protected $config;
 
   /**
-   * Wrapper object for simple configuration from diff.plugins.yml.
-   *
-   * @var \Drupal\Core\Config\ImmutableConfig
+   * Wrapper object for writing/reading simple configuration from diff.plugins.yml
    */
   protected $layoutPluginsConfig;
 
@@ -58,7 +54,7 @@ class DiffLayoutManager extends DefaultPluginManager {
     $this->alterInfo('diff_layout_builder_info');
     $this->entityTypeManager = $entity_type_manager;
     $this->config = $config_factory->get('diff.settings');
-    $this->layoutPluginsConfig = $config_factory->get('diff.layout_plugins');
+    $this->layoutPluginsConfig =  $config_factory->get('diff.layout_plugins');
   }
 
   /**
@@ -71,7 +67,7 @@ class DiffLayoutManager extends DefaultPluginManager {
    *   The layout plugin options.
    */
   public function getPluginOptions() {
-    $plugins = $this->config->get('general_settings.layout_plugins');
+    $plugins = $this->config->get('general_settings' . '.' . 'layout_plugins');
     $plugin_options = [];
     // Get the plugins sorted and build an array keyed by the plugin id.
     if ($plugins) {
@@ -115,5 +111,4 @@ class DiffLayoutManager extends DefaultPluginManager {
     }
     return $definitions;
   }
-
 }

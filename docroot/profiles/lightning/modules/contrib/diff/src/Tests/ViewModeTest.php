@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @ingroup diff
+ */
+
 namespace Drupal\diff\Tests;
 
 /**
@@ -7,7 +11,7 @@ namespace Drupal\diff\Tests;
  *
  * @group diff
  */
-class DiffViewModeTest extends DiffTestBase {
+class ViewModeTest extends DiffTestBase {
 
   /**
    * Modules to enable.
@@ -40,17 +44,13 @@ class DiffViewModeTest extends DiffTestBase {
 
     // Set the Body field to hidden in the diff view mode.
     $edit = [
-      'fields[body][region]' => 'hidden',
+      'fields[body][type]' => 'hidden',
     ];
-    $this->drupalPostForm('admin/structure/types/manage/article/display', $edit, t('Save'));
-    $edit = [
-      'fields[body][region]' => 'hidden',
-    ];
-    $this->drupalPostForm('admin/structure/types/manage/article/display/teaser', $edit, t('Save'));
+    $this->drupalPostForm('admin/structure/types/manage/article/form-display', $edit, t('Save'));
 
     // Check the difference between the last two revisions.
     $this->drupalGet('node/' . $node->id() . '/revisions');
-    $this->drupalPostForm(NULL, [], t('Compare selected revisions'));
+    $this->drupalPostForm(NULL, [], t('Compare'));
     $this->assertNoText('Body');
     $this->assertNoText('Foo');
     $this->assertNoText('Fighters');

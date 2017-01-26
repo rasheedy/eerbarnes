@@ -31,6 +31,6 @@ services:
 
   theme.negotiator.visual_diff:
     class: Drupal\diff\VisualDiffThemeNegotiator
-    arguments: ['@config.factory']
+    arguments: ['@current_user', '@config.factory', '@entity.manager', '@router.admin_context']
     tags:
       - { name: theme_negotiator, priority: 0 }

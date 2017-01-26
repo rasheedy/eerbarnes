@@ -7,8 +7,6 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Plugin to diff text fields.
- *
  * @FieldDiffBuilder(
  *   id = "text_field_diff_builder",
  *   label = @Translation("Text Field Diff"),
@@ -37,7 +35,7 @@ class TextFieldBuilder extends FieldDiffBuilderBase {
           // The format loaded successfully.
           $label = $this->t('Format');
           if ($format != NULL) {
-            $result[$field_key][] = $label . ": " . $format->label();
+            $result[$field_key][] = $label . ": " . $format->name;
           }
           else {
             $result[$field_key][] = $label . ": " . $this->t('Missing format @format', array('@format' => $values[$field_key]));

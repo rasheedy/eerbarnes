@@ -3,15 +3,11 @@
 namespace Drupal\diff\Form;
 
 use Drupal\Component\Utility\Xss;
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\diff\DiffLayoutManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * Configure global diff settings.
- */
 class GeneralSettingsForm extends ConfigFormBase {
 
   /**
@@ -24,14 +20,10 @@ class GeneralSettingsForm extends ConfigFormBase {
   /**
    * GeneralSettingsForm constructor.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The factory for configuration objects.
    * @param \Drupal\diff\DiffLayoutManager $diff_layout_manager
    *   The diff layout manager service.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, DiffLayoutManager $diff_layout_manager) {
-    parent::__construct($config_factory);
-
+  public function __construct(DiffLayoutManager $diff_layout_manager) {
     $this->diffLayoutManager = $diff_layout_manager;
   }
 
@@ -40,7 +32,6 @@ class GeneralSettingsForm extends ConfigFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('config.factory'),
       $container->get('plugin.manager.diff.layout')
     );
   }
@@ -83,12 +74,10 @@ class GeneralSettingsForm extends ConfigFormBase {
     $weight = count($layout_plugins) + 1;
     $layout_plugins_order = [];
     foreach ($layout_plugins as $id => $layout_plugin) {
-      $layout_plugin_settings = $config->get('general_settings.layout_plugins')[$id];
       $layout_plugins_order[$id] = [
         'label' => $layout_plugin['label'],
-        'description' => $layout_plugin['description'] ?: '',
-        'enabled' => $layout_plugin_settings['enabled'],
-        'weight' => isset($layout_plugin_settings['weight']) ? $layout_plugin_settings['weight'] : $weight,
+        'enabled' => $config->get('general_settings' . '.' . 'layout_plugins')[$id]['enabled'],
+        'weight' => isset($config->get('general_settings' . '.' . 'layout_plugins')[$id]['weight']) ? $config->get('general_settings' . '.' . 'layout_plugins')[$id]['weight'] : $weight,
       ];
       $weight++;
     }
@@ -97,7 +86,7 @@ class GeneralSettingsForm extends ConfigFormBase {
       '#type' => 'table',
       '#header' => [t('Layout'), t('Description'), t('Weight')],
       '#empty' => t('There are no items yet. Add an item.'),
-      '#suffix' => '<div class="description">' . $this->t('The layout plugins that are enabled to display the revision comparison.') . '</div>',
+      '#suffix' => '<div class="description">' . $this->t('The layout plugins that are enabled to display the revision comparison.') .'</div>',
       '#tabledrag' => [
         [
           'action' => 'order',
@@ -110,33 +99,30 @@ class GeneralSettingsForm extends ConfigFormBase {
     uasort($layout_plugins_order, 'Drupal\Component\Utility\SortArray::sortByWeightElement');
 
     foreach ($layout_plugins_order as $id => $layout_plugin) {
-      $form['layout_plugins'][$id] = [
-        '#attributes' => [
-          'class' => ['draggable'],
+      $description = $this->diffLayoutManager->getDefinition($id)['description'];
+      $form['layout_plugins'][$id]['#attributes']['class'][] = 'draggable';
+      $form['layout_plugins'][$id]['enabled'] = [
+        '#type' => 'checkbox',
+        '#title' => $layout_plugin['label'],
+        '#title_display' => 'after',
+        '#default_value' => $layout_plugin['enabled'],
+      ];
+      $form['layout_plugins'][$id]['description'] = [
+        '#type' => 'markup',
+        '#markup' => isset($description) ? Xss::filter($description) : '',
+      ];
+      $form['layout_plugins'][$id]['weight'] = [
+        '#type' => 'weight',
+        '#title' => t('Weight for @title', ['@title' => $layout_plugin['label']]),
+        '#title_display' => 'invisible',
+        '#delta' => 50,
+        '#default_value' => (int) $layout_plugin['weight'],
+        '#array_parents' => [
+          'settings',
+          'sites',
+          $id
         ],
-        'enabled' => [
-          '#type' => 'checkbox',
-          '#title' => $layout_plugin['label'],
-          '#title_display' => 'after',
-          '#default_value' => $layout_plugin['enabled'],
-        ],
-        'description' => [
-          '#type' => 'markup',
-          '#markup' => Xss::filter($layout_plugin['description']),
-        ],
-        'weight' => [
-          '#type' => 'weight',
-          '#title' => t('Weight for @title', ['@title' => $layout_plugin['label']]),
-          '#title_display' => 'invisible',
-          '#delta' => 50,
-          '#default_value' => (int) $layout_plugin['weight'],
-          '#array_parents' => [
-            'settings',
-            'sites',
-            $id,
-          ],
-          '#attributes' => ['class' => ['diff-layout-plugins-order-weight']],
-        ],
+        '#attributes' => ['class' => ['diff-layout-plugins-order-weight']],
       ];
     }
 
@@ -148,7 +134,7 @@ class GeneralSettingsForm extends ConfigFormBase {
         'visible' => [
           [':input[name="layout_plugins[split_fields][enabled]"]' => ['checked' => TRUE]],
           [':input[name="layout_plugins[unified_fields][enabled]"]' => ['checked' => TRUE]],
-        ],
+        ]
       ],
     ];
 
@@ -177,8 +163,8 @@ class GeneralSettingsForm extends ConfigFormBase {
         '#open' => TRUE,
         '#states' => [
           'visible' => [
-            ':input[name="layout_plugins[visual_inline][enabled]"]' => ['checked' => TRUE],
-          ],
+            ':input[name="layout_plugins[visual_inline][enabled]"]' => ['checked' => TRUE]
+          ]
         ],
       ];
 
@@ -203,9 +189,6 @@ class GeneralSettingsForm extends ConfigFormBase {
     return parent::buildForm($form, $form_state);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
 
@@ -232,14 +215,14 @@ class GeneralSettingsForm extends ConfigFormBase {
       'context_lines_leading',
       'context_lines_trailing',
       'layout_plugins',
-      'visual_inline_theme',
+      'visual_inline_theme'
     );
     foreach ($keys as $key) {
       $config->set('general_settings.' . $key, $form_state->getValue($key));
     }
     $config->save();
 
-    parent::submitForm($form, $form_state);
+    return parent::submitForm($form, $form_state);
   }
 
 }
