@@ -54,3 +54,6 @@
  * @see https://www.drupal.org/documentation/install/multi-site
  */
  $sites['multidemo.dev'] = 'multidemo.com';
+ $sites['uk.multidemo.dev'] = 'multidemo.com';
+ $sites['multidemo.local'] = 'multidemo.com';
+ 

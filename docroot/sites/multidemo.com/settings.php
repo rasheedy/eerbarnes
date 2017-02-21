@@ -757,10 +757,14 @@ if (class_exists('Drupal') && defined('Drupal::CORE_COMPATIBILITY') && Drupal::C
  * Keep this code block at the end of this file to take full effect.
  */
 #
-// if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-//   include $app_root . '/' . $site_path . '/settings.local.php';
-// }
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
+// echo 'approot: '. $app_root . '/' . $site_path . '/settings.local.php<br/>';
+# /Users/rasheed.barnes/Sites/rasheedacquia/docroot/sites/multidemo.com/settings.local.php
 
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/eerbarnes/multidemo-settings.inc');
 }
+

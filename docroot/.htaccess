@@ -122,6 +122,11 @@ AddEncoding gzip svgz
   # uncomment the following line:
   # RewriteBase /
 
+
+
+  RewriteCond %{HTTP_HOST} ^uk\.multidemo\.dev/$
+  RewriteRule .* http://multidemo.dev/uk-news [L]
+
   # Redirect common PHP files to their new locations.
   RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
   RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild.php)
