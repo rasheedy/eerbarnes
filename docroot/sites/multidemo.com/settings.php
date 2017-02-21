@@ -739,6 +739,13 @@ $settings['file_scan_ignore_directories'] = [
   'bower_components',
 ];
 
+
+if (class_exists('Drupal') && defined('Drupal::CORE_COMPATIBILITY') && Drupal::CORE_COMPATIBILITY == '8.x') {
+ if (!isset($settings['install_profile'])) {
+    $settings['install_profile'] = 'lightning';
+  }
+}
+
 /**
  * Load local development override configuration, if available.
  *
@@ -754,3 +761,6 @@ $settings['file_scan_ignore_directories'] = [
 //   include $app_root . '/' . $site_path . '/settings.local.php';
 // }
 
+if (file_exists('/var/www/site-php')) {
+  require('/var/www/site-php/eerbarnes/multidemo-settings.inc');
+}
