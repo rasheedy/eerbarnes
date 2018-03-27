@@ -8,7 +8,6 @@
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Hook\Scope\AfterScenarioScope;
 use Behat\Gherkin\Node\PyStringNode;
-use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Exception\ExpectationException;
 use Behat\Mink\Exception\UnsupportedDriverActionException;
 use Drupal\DrupalExtension\Context\DrupalSubContextBase;
@@ -46,7 +45,7 @@ class LightningSubContext extends DrupalSubContextBase {
   /**
    * Store current time.
    *
-   * @BeforeScenario ~@errors
+   * @BeforeScenario
    */
   public function setStartTime() {
     $this->startTime = time();
@@ -58,14 +57,23 @@ class LightningSubContext extends DrupalSubContextBase {
    * @AfterScenario ~@errors
    */
   public function checkWatchdog(AfterScenarioScope $scope) {
-    if (db_table_exists('watchdog')) {
-      $log = db_select('watchdog', 'w')
+    // Bypass the error checking if the scenario has the @errors tag.
+    if (in_array('errors', $scope->getScenario()->getTags())) {
+      return;
+    }
+
+    $db = \Drupal::database();
+    if ($db->schema()->tableExists('watchdog')) {
+      $log = $db->select('watchdog', 'w')
         ->fields('w')
         ->condition('w.type', 'php', '=')
         ->condition('w.timestamp', $this->startTime, '>=')
         ->execute()
         ->fetchAll();
+
       if (!empty($log)) {
+        // TODO: Move this stuff to its own exception class in Lightning
+        // Extension for greater clarity.
         foreach ($log as $error) {
           // Make the substitutions easier to read in the log.
           $error->variables = unserialize($error->variables);
@@ -86,34 +94,6 @@ class LightningSubContext extends DrupalSubContextBase {
    */
   public function theElementShouldExist($selector) {
     $this->assertSession()->elementExists('css', $selector);
-  }
-
-  /**
-   * Clicks an arbitrary element, found by CSS selector.
-   *
-   * @param string $selector
-   *   The CSS selector.
-   *
-   * @throws \Behat\Mink\Exception\ElementNotFoundException
-   *   If the specified element is not present on the page.
-   *
-   * @When I click the :selector element
-   */
-  public function clickElementBySelector($selector) {
-    $session = $this->getSession();
-    $element = $session->getPage()->find('css', $selector);
-    if ($element) {
-      try {
-        $this->scrollToElement($selector);
-      }
-      catch (UnsupportedDriverActionException $e) {
-        // Don't worry about it.
-      }
-      $element->click();
-    }
-    else {
-      throw new ElementNotFoundException($session, 'element', 'css', $selector);
-    }
   }
 
   /**
@@ -196,90 +176,6 @@ class LightningSubContext extends DrupalSubContextBase {
   }
 
   /**
-   * Creates a video entity from an embed code.
-   *
-   * @param \Behat\Gherkin\Node\PyStringNode $embed_code
-   *   The embed code.
-   *
-   * @Given video from embed code:
-   *
-   * @When I create a video from embed code:
-   */
-  public function videoFromEmbedCode(PyStringNode $embed_code) {
-    $this->createMediaFromEmbedCode('video', $embed_code, 'field_media_video_embed_field');
-  }
-
-  /**
-   * Creates a media asset from an embed code.
-   *
-   * @param string $bundle
-   *   The media bundle ID.
-   * @param \Behat\Gherkin\Node\PyStringNode $embed_code
-   *   The embed code.
-   * @param string $field
-   *   (optional) The embed code field. Defaults to embed_code.
-   *
-   * @Given :bundle media from embed code:
-   *
-   * @When I create :bundle media from embed code:
-   */
-  public function createMediaFromEmbedCode($bundle, PyStringNode $embed_code, $field = 'embed_code') {
-    $entity = \Drupal::entityTypeManager()
-      ->getStorage('media')
-      ->create([
-        'bundle' => $bundle,
-        'name' => $this->getRandom()->string(),
-        $field => (string) $embed_code,
-        'field_media_in_library' => TRUE,
-        'status' => TRUE,
-      ]);
-    $entity->save();
-
-    /** @var \EntitySubContext $context */
-    $context = $this->getContext('EntitySubContext');
-    $context->queueEntity($entity);
-  }
-
-  /**
-   * Scrolls an element into the viewport.
-   *
-   * @param string $selector
-   *   The element's CSS selector.
-   *
-   * @When I scroll to the :selector element
-   */
-  public function scrollToElement($selector) {
-    $this->getSession()
-      ->executeScript('document.querySelector("' . addslashes($selector) . '").scrollIntoView()');
-  }
-
-  /**
-   * Expands a drop button.
-   *
-   * @param string $selector
-   *   The data-drupal-selector attribute of the drop button.
-   *
-   * @When I expand the :selector drop button
-   */
-  public function expandDropButton($selector) {
-    $selector = 'ul.dropbutton[data-drupal-selector="' . $selector . '"]';
-    $this->clickElementBySelector($selector . ' li.dropbutton-toggle');
-    $this->scrollToElement($selector);
-  }
-
-  /**
-   * Waits a while, for debugging.
-   *
-   * @param int $seconds
-   *   How long to wait.
-   *
-   * @When I wait :seconds seconds
-   */
-  public function wait($seconds) {
-    sleep($seconds);
-  }
-
-  /**
    * Maximizes the window (probably for debugging purposes).
    *
    * @When I maximize the window
@@ -300,6 +196,23 @@ class LightningSubContext extends DrupalSubContextBase {
     $screenshot = $this->getSession()->getDriver()->getScreenshot();
     // If this file is in tests/features/bootstrap, the screenshot be in tests.
     file_put_contents(__DIR__ . '../../' . $filename . '.png', $screenshot);
+  }
+
+  /**
+   *  Dumps the HTML directly to stdout and a file.
+   *
+   * @When I view the HTML
+   */
+  public function viewTheHtml() {
+
+    $html_data = $this->getSession()->getDriver()->getContent();
+    echo $html_data;
+    $file_and_path = '/tmp/behat_page.html';
+    file_put_contents($file_and_path, $html_data);
+
+    if (PHP_OS === "Darwin" && PHP_SAPI === "cli") {
+      exec('open -a "Safari.app" ' . $file_and_path);
+    };
   }
 
   /**
@@ -346,18 +259,6 @@ class LightningSubContext extends DrupalSubContextBase {
   }
 
   /**
-   * Assets that a field exists.
-   *
-   * @param string $locator
-   *   The field ID, name, label, or value.
-   *
-   * @Then I should see a :locator field
-   */
-  public function assertFieldExists($locator) {
-    $this->assertSession()->fieldExists($locator);
-  }
-
-  /**
    * Asserts that we are visiting a media entity.
    *
    * @Then I should be visiting a media entity
@@ -379,7 +280,11 @@ class LightningSubContext extends DrupalSubContextBase {
    * @BeforeScenario
    */
   public function setFilePath() {
-    $this->minkContext->setMinkParameter('files_path', __DIR__ . '/../../files');
+
+    $existing = $this->minkContext->getMinkParameter('files_path');
+    if (empty($existing)) {
+      $this->minkContext->setMinkParameter('files_path', __DIR__ . '/../../files');
+    }
   }
 
   /**
@@ -389,24 +294,6 @@ class LightningSubContext extends DrupalSubContextBase {
    */
   public function switchToWindow() {
     $this->getSession()->switchToWindow();
-  }
-
-  /**
-   * Asserts that a given field has the disabled attribute.
-   *
-   * @param string $field
-   *   The label, placeholder, ID or name of the field to check.
-   *
-   * @Then the :field field should be disabled
-   *
-   * @throws ExpectationException
-   *   If the field does not have the disabled attribute.
-   */
-  public function assertDisabledField($field) {
-    $element = $this->assertSession()->fieldExists($field);
-    if (!$element->hasAttribute('disabled')) {
-      throw new ExpectationException("Expected '{$field}' field to be disabled.", $this->getSession()->getDriver());
-    }
   }
 
   /**
@@ -436,50 +323,6 @@ class LightningSubContext extends DrupalSubContextBase {
   public function assertLinkNotExists($locator) {
     $this->assertSession()
       ->elementNotExists('named', ['link', $locator]);
-  }
-
-  /**
-   * Submits the image browser.
-   *
-   * @When I submit the entity browser
-   */
-  public function submitEntityBrowser() {
-    $this->getSession()
-      ->executeScript('window.frames["entity_browser_iframe_image_browser"].document.forms[0].op.click()');
-  }
-
-  /**
-   * Switches to an iframe.
-   *
-   * @param string $name
-   *   The iframe name.
-   *
-   * @When I switch to the :name frame
-   */
-  public function switchToFrame($name) {
-    $this->getSession()->switchToIFrame($name);
-  }
-
-  /**
-   * Schedules a node for publication.
-   *
-   * @param string $when
-   *   The date and time at which to publish the node, in the format
-   *   YYYY-MM-DD HH:MM:SS.
-   *
-   * @When I schedule the node to be published at :when
-   */
-  public function schedulePublication($when) {
-    $this->minkContext->pressButton('Add new scheduled update');
-    $this->minkContext->iWaitForAjaxToFinish();
-
-    list ($date, $time) = explode(' ', $when, 2);
-    $this->minkContext->fillField('scheduled_update[form][inline_entity_form][update_timestamp][0][value][date]', $date);
-    $this->minkContext->fillField('scheduled_update[form][inline_entity_form][update_timestamp][0][value][time]', $time);
-    $this->minkContext->selectOption('scheduled_update[form][inline_entity_form][field_moderation_state]', 'published');
-
-    $this->minkContext->pressButton('Create scheduled update');
-    $this->minkContext->iWaitForAjaxToFinish();
   }
 
 }
