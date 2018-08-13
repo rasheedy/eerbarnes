@@ -17,8 +17,8 @@ base theme: classy
 description: 'The default administration theme for Drupal 8 was designed with clean lines, simple blocks, and sans-serif font to emphasize the tools and tasks at hand.'
 alt text: 'Default administration theme for Drupal 8 with simple blocks and clean lines.'
 package: Core
-version: VERSION
-core: 8.x
+# version: VERSION
+# core: 8.x
 libraries:
  - seven/global-styling
 libraries-override:
@@ -66,7 +66,8 @@ regions:
 regions_hidden:
   - sidebar_first
 
-# Information added by drush on 2018-03-07
-version: '8.5.0+0-dev'
+# Information added by Drupal.org packaging script on 2018-08-01
+version: '8.5.6'
+core: '8.x'
 project: 'drupal'
-datestamp: 1520457020
+datestamp: 1533156926
